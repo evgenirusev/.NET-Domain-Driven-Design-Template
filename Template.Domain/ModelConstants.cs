@@ -10,12 +10,6 @@
         public const int Zero = 0;
     }
 
-    public class ExampleDomain
-    {
-        public const int MinDescriptionLength = 20;
-        public const int MaxDescriptionLength = 1000;
-    }
-
     public class PhoneNumber
     {
         public const int MinPhoneNumberLength = 5;

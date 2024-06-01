@@ -1,3 +1,5 @@
-﻿public interface IAggregateRoot
+﻿namespace Template.Domain.Common;
+
+public interface IAggregateRoot
 {
 }
