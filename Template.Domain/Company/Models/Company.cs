@@ -11,16 +11,15 @@ public class Company : Entity<int>, IAggregateRoot
         string companiesHouseNumber)
     {
         Validate(companyName, companiesHouseNumber);
-        
-        this.CompanyName = companyName;
-        this.Address = address;
-        this.CompaniesHouseNumber = companiesHouseNumber;
+
+        CompanyName = companyName;
+        Address = address;
+        CompaniesHouseNumber = companiesHouseNumber;
     }
-    
+
     public string CompanyName { get; private set; }
     public Address Address { get; private set; }
     public string CompaniesHouseNumber { get; private set; }
-    
 
     private void Validate(string companyName, string companyHouseNumber)
     {
