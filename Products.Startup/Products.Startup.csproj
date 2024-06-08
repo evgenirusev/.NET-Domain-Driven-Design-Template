@@ -4,10 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Template.Startup</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Template.Web\Template.Web.csproj" />
+      <ProjectReference Include="..\Products.Web\Products.Web.csproj" />
     </ItemGroup>
 
 </Project>

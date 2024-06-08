@@ -1,75 +1,51 @@
-﻿using Template.Common.Exceptions;
-
-namespace Template.Common;
+﻿namespace Template.Common;
 
 public static class Guard
 {
-    public static void AgainstEmptyString<TException>(string value, string name = "Value")
-        where TException : BaseException, new()
+    public static void AgainstEmptyString(string value, string name = "Value")
     {
         if (!string.IsNullOrEmpty(value))
-        {
             return;
-        }
 
-        ThrowException<TException>($"{name} cannot be null ot empty.");
+        ThrowArgumentException($"{name} cannot be null or empty.");
     }
 
-    public static void ForStringLength<TException>(string value, int minLength, int maxLength, string name = "Value")
-        where TException : BaseException, new()
+    public static void ForStringLength(string value, int minLength, int maxLength, string name = "Value")
     {
-        AgainstEmptyString<TException>(value, name);
+        AgainstEmptyString(value, name);
 
-        if (minLength <= value.Length && value.Length <= maxLength)
-        {
+        if (value.Length >= minLength && value.Length <= maxLength)
             return;
-        }
 
-        ThrowException<TException>($"{name} must have between {minLength} and {maxLength} symbols.");
+        ThrowArgumentException($"{name} must have between {minLength} and {maxLength} symbols.");
     }
 
-    public static void AgainstOutOfRange<TException>(int number, int min, int max, string name = "Value")
-        where TException : BaseException, new()
+    public static void AgainstOutOfRange(int number, int min, int max, string name = "Value")
     {
-        if (min <= number && number <= max)
-        {
+        if (number >= min && number <= max)
             return;
-        }
 
-        ThrowException<TException>($"{name} must be between {min} and {max}.");
+        ThrowArgumentException($"{name} must be between {min} and {max}.");
     }
 
-    public static void AgainstOutOfRange<TException>(decimal number, decimal min, decimal max, string name = "Value")
-        where TException : BaseException, new()
+    public static void AgainstOutOfRange(decimal number, decimal min, decimal max, string name = "Value")
     {
-        if (min <= number && number <= max)
-        {
+        if (number >= min && number <= max)
             return;
-        }
 
-        ThrowException<TException>($"{name} must be between {min} and {max}.");
+        ThrowArgumentException($"{name} must be between {min} and {max}.");
     }
 
-
-    public static void Against<TException>(object actualValue, object unexpectedValue, string name = "Value")
-        where TException : BaseException, new()
+    public static void Against(object actualValue, object unexpectedValue, string name = "Value")
     {
         if (!actualValue.Equals(unexpectedValue))
-        {
             return;
-        }
 
-        ThrowException<TException>($"{name} must not be {unexpectedValue}.");
+        ThrowArgumentException($"{name} must not be {unexpectedValue}.");
     }
 
-    private static void ThrowException<TException>(string message)
-        where TException : BaseException, new()
+    private static void ThrowArgumentException(string message)
     {
-        var exception = new TException
-        {
-            Error = message
-        };
-
-        throw exception;
+        throw new ArgumentException(message);
     }
 }

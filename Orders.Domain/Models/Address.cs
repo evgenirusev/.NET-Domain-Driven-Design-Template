@@ -1,7 +1,4 @@
 using Template.Common;
-using Template.Domain.Exceptions;
-
-namespace Template.Domain.Company.Models;
 
 public class Address : ValueObject
 {
@@ -22,13 +19,13 @@ public class Address : ValueObject
 
     private void Validate(string addressLine1, string? addressLine2, string? country, string? postalCode) 
     {
-        Guard.AgainstEmptyString<InvalidAddressException>(addressLine1);
-        Guard.ForStringLength<InvalidAddressException>(AddressLine1, 2, 500, nameof(AddressLine1));
+        Guard.AgainstEmptyString(addressLine1);
+        Guard.ForStringLength(AddressLine1, 2, 500, nameof(AddressLine1));
         
         if (!string.IsNullOrWhiteSpace(addressLine2))
-            Guard.ForStringLength<InvalidAddressException>(AddressLine2, 2, 500, nameof(AddressLine2));
+            Guard.ForStringLength(AddressLine2, 2, 500, nameof(AddressLine2));
         if (!string.IsNullOrWhiteSpace(addressLine2))
-            Guard.ForStringLength<InvalidAddressException>(PostalCode, 2, 10, nameof(PostalCode));
+            Guard.ForStringLength(PostalCode, 2, 10, nameof(PostalCode));
     }
 
     protected override IEnumerable<object> GetEqualityComponents()
