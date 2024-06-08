@@ -1,6 +1,4 @@
-﻿namespace Template.Common;
-
-public static class Guard
+﻿public static class Guard
 {
     public static void AgainstEmptyString(string value, string name = "Value")
     {

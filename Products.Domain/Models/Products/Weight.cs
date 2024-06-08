@@ -1,5 +1,3 @@
-using Template.Common;
-
 public class Weight : ValueObject
 {
     public decimal Value { get; }

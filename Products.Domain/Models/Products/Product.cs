@@ -1,7 +1,7 @@
-using Template.Common;
-
 public class Product : Entity<int>, IAggregateRoot
 {
+    public HashSet<Supplier> Suppliers { get; private set; }
+    
     internal Product(
         string name,
         string description,
@@ -15,6 +15,8 @@ public class Product : Entity<int>, IAggregateRoot
         ProductType = productType;
         Weight = weight;
         Price = price;
+
+        Suppliers = new HashSet<Supplier>();
     }
 
     public string Name { get; private set; }
@@ -28,10 +30,10 @@ public class Product : Entity<int>, IAggregateRoot
         ValidateCompanyName(name);
         ValidateDescription(description);
     }
-    
+
     private void ValidateCompanyName(string name)
-        => Guard.ForStringLength(name, 2, 50,nameof(Name));
-    
+        => Guard.ForStringLength(name, 2, 50, nameof(Name));
+
     private void ValidateDescription(string description)
-        => Guard.ForStringLength(description, 2, 500,nameof(Description));
+        => Guard.ForStringLength(description, 2, 500, nameof(Description));
 }

@@ -1,5 +1,3 @@
-using Template.Common;
-
 public class Price : ValueObject
 {
     public decimal Amount { get; }
