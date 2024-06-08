@@ -1,11 +1,11 @@
 using Template.Common;
 
-internal class Price : ValueObject
+public class Price : ValueObject
 {
     public decimal Amount { get; }
     public string Currency { get; }
 
-    public Price(decimal amount, string currency)
+    internal Price(decimal amount, string currency)
     {
         Validate(amount, currency);
 
@@ -13,7 +13,7 @@ internal class Price : ValueObject
         Currency = currency;
     }
 
-    public void Validate(decimal amount, string currency)
+    private void Validate(decimal amount, string currency)
     {
         Guard.AgainstOutOfRange(amount, 0, decimal.MaxValue, nameof(amount));
         Guard.AgainstEmptyString(currency, nameof(currency));
