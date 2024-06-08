@@ -6,5 +6,19 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Template.Application</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Products\Queries\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+      <ProjectReference Include="..\Products.Domain\Products.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.9.1" />
+      <PackageReference Include="MediatR" Version="12.3.0" />
+    </ItemGroup>
     
 </Project>
