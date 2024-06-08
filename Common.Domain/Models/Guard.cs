@@ -1,4 +1,6 @@
-﻿using Template.Domain.Exceptions;
+﻿using Template.Common.Exceptions;
+
+namespace Template.Common;
 
 public static class Guard
 {
@@ -46,18 +48,6 @@ public static class Guard
         }
 
         ThrowException<TException>($"{name} must be between {min} and {max}.");
-    }
-
-    public static void ForValidUrl<TException>(string url, string name = "Value")
-        where TException : BaseException, new()
-    {
-        if (url.Length <= ModelConstants.Common.MaxUrlLength &&
-            Uri.IsWellFormedUriString(url, UriKind.Absolute))
-        {
-            return;
-        }
-
-        ThrowException<TException>($"{name} must be a valid URL.");
     }
 
 

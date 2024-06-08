@@ -1,3 +1,4 @@
+using Template.Common;
 using Template.Domain.Exceptions;
 
 namespace Template.Domain.Company.Models;

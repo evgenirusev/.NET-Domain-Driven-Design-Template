@@ -1,4 +1,4 @@
-﻿using Template.Domain.Common;
+﻿using Template.Common;
 
 namespace Template.Application.Contracts;
 

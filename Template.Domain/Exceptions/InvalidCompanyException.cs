@@ -1,3 +1,5 @@
+using Template.Common.Exceptions;
+
 namespace Template.Domain.Exceptions;
 
 public class InvalidCompanyException : BaseException

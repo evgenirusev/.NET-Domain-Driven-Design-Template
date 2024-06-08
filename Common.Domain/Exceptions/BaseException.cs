@@ -1,4 +1,4 @@
-﻿namespace Template.Domain.Exceptions;
+﻿namespace Template.Common.Exceptions;
 
 public abstract class BaseException : Exception
 {
