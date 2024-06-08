@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<AssemblyName>BettingSystem.Infrastructure.Betting</AssemblyName>
+		<RootNamespace>BettingSystem.Infrastructure.Betting</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectCapability Include="DynamicFileNesting" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<Compile Remove="**\*.Specs.cs" />
+		<Compile Remove="**\*.Fakes.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' != 'Release'">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
+		<ProjectReference Include="..\Betting.Application\Betting.Application.csproj" />
+	</ItemGroup>
+
+</Project>

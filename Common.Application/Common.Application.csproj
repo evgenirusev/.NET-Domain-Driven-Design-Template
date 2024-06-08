@@ -7,10 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+      <Folder Include="Behaviours\" />
+      <Folder Include="Contracts\" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
-    </ItemGroup>
 </Project>

@@ -1,0 +1,16 @@
+{
+  "General": {
+    "WebAssemblyName": "BettingSystem.Startup.Betting"
+  },
+  "ApplicationSettings": {
+    "Secret": "My Fake Secret"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "My Fake Connection String"
+  },
+  "MessageQueueSettings": {
+    "Host": "localhost",
+    "UserName": null,
+    "Password": null
+  }
+}

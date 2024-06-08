@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<GenerateProgramFile>false</GenerateProgramFile>
+		<AssemblyName>BettingSystem.Startup.Betting</AssemblyName>
+		<RootNamespace>BettingSystem.Startup.Betting</RootNamespace>
+		<UserSecretsId>2755f1c2-a69d-4396-bf36-36ca00b9aafa</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectCapability Include="DynamicFileNesting" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="testsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<Compile Remove="**\*.Specs.cs" />
+		<Content Update="testsettings.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' != 'Release'">
+		<PackageReference Include="MyTested.AspNetCore.Mvc.Universe" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Betting.Infrastructure\Betting.Infrastructure.csproj" />
+		<ProjectReference Include="..\Betting.Web\Betting.Web.csproj" />
+	</ItemGroup>
+
+</Project>

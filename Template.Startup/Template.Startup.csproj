@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Template.Web\Template.Web.csproj" />
+    </ItemGroup>
+
 </Project>

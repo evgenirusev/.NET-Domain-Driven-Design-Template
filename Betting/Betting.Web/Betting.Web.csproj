@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<AssemblyName>BettingSystem.Web.Betting</AssemblyName>
+		<RootNamespace>BettingSystem.Web.Betting</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectCapability Include="DynamicFileNesting" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj" />
+		<ProjectReference Include="..\Betting.Application\Betting.Application.csproj" />
+	</ItemGroup>
+
+</Project>
