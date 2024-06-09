@@ -14,7 +14,7 @@ public static class ApplicationConfiguration
             .Configure<ApplicationSettings>(
                 configuration.GetSection(nameof(ApplicationSettings)),
                 options => options.BindNonPublicProperties = true)
-            .AddMediatR(assembly)
+            .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
     public static IServiceCollection AddEventConsumers(
