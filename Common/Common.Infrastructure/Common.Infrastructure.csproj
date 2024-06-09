@@ -14,6 +14,10 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.8.12" />
+        <PackageReference Include="Hangfire.Core" Version="1.8.12" />
+        <PackageReference Include="Hangfire.SqlServer" Version="1.8.12" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
     </ItemGroup>
 
     <ItemGroup>
