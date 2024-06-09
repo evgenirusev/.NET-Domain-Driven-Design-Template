@@ -1,8 +1,5 @@
 using MediatR;
 
-public record CreatePriceRequest(decimal Amount, string Currency);
-public record CreateWeightRequest(decimal Value, string Unit);
-
 public class CreateProductCommand : ProductCommand, IRequest<CreateProductResponse>
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductResponse>

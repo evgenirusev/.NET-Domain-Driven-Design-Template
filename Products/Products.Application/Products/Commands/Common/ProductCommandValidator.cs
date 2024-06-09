@@ -1,6 +1,6 @@
 using FluentValidation;
 
-public class ProductCommandValidator : AbstractValidator<CreateProductCommand>
+public class ProductCommandValidator : AbstractValidator<ProductCommand>
 {
     public ProductCommandValidator()
     {
