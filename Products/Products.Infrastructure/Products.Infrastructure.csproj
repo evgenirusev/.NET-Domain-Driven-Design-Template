@@ -11,4 +11,8 @@
       <ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
       <ProjectReference Include="..\Products.Application\Products.Application.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Persistence\Migrations\" />
+    </ItemGroup>
+
 </Project>

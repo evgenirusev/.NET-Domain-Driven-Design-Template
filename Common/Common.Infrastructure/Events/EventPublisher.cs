@@ -10,13 +10,13 @@ internal class EventPublisher : IEventPublisher
         => this.bus = bus;
 
     public async Task Publish(IDomainEvent domainEvent)
-        => await this.bus.Publish(
+        => await bus.Publish(
             domainEvent,
             domainEvent.GetType(),
             GetCancellationToken());
 
     public async Task Publish<TDomainEvent>(TDomainEvent domainEvent, Type domainEventType)
-        => await this.bus.Publish(
+        => await bus.Publish(
             domainEvent,
             domainEventType,
             GetCancellationToken());

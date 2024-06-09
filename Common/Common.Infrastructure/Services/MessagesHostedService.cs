@@ -23,7 +23,7 @@ internal class MessagesHostedService : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        using var scope = this.serviceScopeFactory.CreateScope();
+        using var scope = serviceScopeFactory.CreateScope();
 
         var data = scope.ServiceProvider.GetService<DbContext>();
 
@@ -32,9 +32,9 @@ internal class MessagesHostedService : IHostedService
             data.Database.Migrate();
         }
 
-        this.recurringJob.AddOrUpdate(
+        recurringJob.AddOrUpdate(
             nameof(MessagesHostedService),
-            () => this.ProcessPendingMessages(),
+            () => ProcessPendingMessages(),
             CronExpression);
 
         return Task.CompletedTask;
@@ -45,7 +45,7 @@ internal class MessagesHostedService : IHostedService
 
     public void ProcessPendingMessages()
     {
-        using var scope = this.serviceScopeFactory.CreateScope();
+        using var scope = serviceScopeFactory.CreateScope();
 
         var data = scope.ServiceProvider.GetService<DbContext>();
 
@@ -57,7 +57,7 @@ internal class MessagesHostedService : IHostedService
 
         foreach (var message in messages)
         {
-            this.eventPublisher
+            eventPublisher
                 .Publish(message.Data, message.Type)
                 .GetAwaiter()
                 .GetResult();

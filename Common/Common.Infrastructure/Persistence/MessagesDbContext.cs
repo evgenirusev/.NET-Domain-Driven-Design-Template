@@ -18,14 +18,14 @@ internal abstract class MessagesDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new MessageConfiguration());
-        builder.ApplyConfigurationsFromAssembly(this.ConfigurationsAssembly);
+        builder.ApplyConfigurationsFromAssembly(ConfigurationsAssembly);
 
         base.OnModelCreating(builder);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
-        var entities = this.ChangeTracker
+        var entities = ChangeTracker
             .Entries<IEntity>()
             .Select(e => e.Entity)
             .Where(e => e.Events.Any())
@@ -43,14 +43,14 @@ internal abstract class MessagesDbContext : DbContext
 
             foreach (var (_, message) in eventMessages)
             {
-                this.Add(message);
+                Add(message);
             }
 
             await base.SaveChangesAsync(cancellationToken);
 
             foreach (var (domainEvent, message) in eventMessages)
             {
-                await this.eventPublisher.Publish(domainEvent);
+                await eventPublisher.Publish(domainEvent);
 
                 message.MarkAsPublished();
 

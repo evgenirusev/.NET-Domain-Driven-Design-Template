@@ -13,7 +13,7 @@ public class UpdateProductCommand : ProductCommand, IRequest<Unit>
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await productRepository.GetById(request.Id, cancellationToken);
+            var product = await productRepository.Find(request.Id, cancellationToken);
 
             product.UpdateName(request.Name)
                 .UpdateDescription(request.Description)

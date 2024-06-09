@@ -13,8 +13,8 @@ internal class ImageService : IImageService
     {
         using var imageResult = await Image.LoadAsync(image.Content);
 
-        var original = await this.SaveImage(imageResult, imageResult.Width);
-        var thumbnail = await this.SaveImage(imageResult, ThumbnailWidth);
+        var original = await SaveImage(imageResult, imageResult.Width);
+        var thumbnail = await SaveImage(imageResult, ThumbnailWidth);
 
         return new ImageResponseModel(original, thumbnail);
     }

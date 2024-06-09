@@ -5,9 +5,9 @@
         string userName,
         string password)
     {
-        this.Host = host;
-        this.UserName = userName;
-        this.Password = password;
+        Host = host;
+        UserName = userName;
+        Password = password;
     }
 
     public string Host { get; }

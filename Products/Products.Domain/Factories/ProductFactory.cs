@@ -14,16 +14,16 @@ internal class ProductFactory : IProductFactory
 
     public IProductFactory WithName(string name)
     {
-        this.productName = name;
-        this.isNameSet = true;
+        productName = name;
+        isNameSet = true;
 
         return this;
     }
 
     public IProductFactory WithDescription(string description)
     {
-        this.productDescription = description;
-        this.isDescriptionSet = true;
+        productDescription = description;
+        isDescriptionSet = true;
 
         return this;
     }
@@ -31,37 +31,37 @@ internal class ProductFactory : IProductFactory
     public IProductFactory WithProductType(ProductType productType)
     {
         this.productType = productType;
-        this.isProductTypeSet = true;
+        isProductTypeSet = true;
 
         return this;
     }
 
     public IProductFactory WithPrice(decimal price, string unit)
     {
-        this.productPrice = new Price(price, unit);
-        this.isPriceSet = true;
+        productPrice = new Price(price, unit);
+        isPriceSet = true;
 
         return this;
     }
 
     public IProductFactory WithWeight(decimal weight, string unit)
     {
-        this.productWeight = new Weight(weight, unit);
-        this.isWeightSet = true;
+        productWeight = new Weight(weight, unit);
+        isWeightSet = true;
 
         return this;
     }
 
     public Product Build()
     {
-        if (!this.isNameSet || !this.isDescriptionSet || !this.isProductTypeSet || !this.isPriceSet || !this.isWeightSet)
+        if (!isNameSet || !isDescriptionSet || !isProductTypeSet || !isPriceSet || !isWeightSet)
             throw new InvalidOperationException("Name, description, product type, price, and weight must have a value.");
 
         return new Product(
-            this.productName,
-            this.productDescription,
-            this.productType,
-            this.productWeight,
-            this.productPrice);
+            productName,
+            productDescription,
+            productType,
+            productWeight,
+            productPrice);
     }
 }
