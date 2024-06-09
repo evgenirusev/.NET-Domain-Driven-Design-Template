@@ -1,17 +1,10 @@
 using MediatR;
-using Template.Domain.Repositories;
 
 public record CreatePriceRequest(decimal Amount, string Currency);
 public record CreateWeightRequest(decimal Value, string Unit);
 
-public class CreateProductCommand : IRequest<CreateProductResponse>
+public class CreateProductCommand : ProductCommand, IRequest<CreateProductResponse>
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public int ProductType { get; set; }
-    public CreatePriceRequest Price { get; set; }
-    public CreateWeightRequest Weight { get; set; }
-
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductResponse>
     {
         private readonly IProductDomainRepository productRepository;

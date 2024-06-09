@@ -1,7 +1,7 @@
 public class Product : Entity<int>, IAggregateRoot
 {
     public HashSet<Supplier> Suppliers { get; private set; }
-    
+
     internal Product(
         string name,
         string description,
@@ -25,6 +25,50 @@ public class Product : Entity<int>, IAggregateRoot
     public Weight Weight { get; private set; }
     public Price Price { get; private set; }
 
+    public Product UpdateName(string name)
+    {
+        ValidateCompanyName(name);
+        Name = name;
+        return this;
+    }
+
+    public Product UpdateDescription(string description)
+    {
+        ValidateDescription(description);
+        Description = description;
+        return this;
+    }
+
+    public Product UpdateProductType(ProductType productType)
+    {
+        ProductType = productType;
+        return this;
+    }
+
+    public Product UpdateWeight(Weight weight)
+    {
+        Weight = weight;
+        return this;
+    }
+
+    public Product UpdatePrice(Price price)
+    {
+        Price = price;
+        return this;
+    }
+
+    public Product AddSupplier(Supplier supplier)
+    {
+        Suppliers.Add(supplier);
+        return this;
+    }
+
+    public Product RemoveSupplier(Supplier supplier)
+    {
+        Suppliers.Remove(supplier);
+        return this;
+    }
+
     private void Validate(string name, string description)
     {
         ValidateCompanyName(name);
@@ -32,8 +76,8 @@ public class Product : Entity<int>, IAggregateRoot
     }
 
     private void ValidateCompanyName(string name)
-        => Guard.ForStringLength(name, 2, 50, nameof(Name));
+        => Guard.ForStringLength(name, ProductModelConstants.Common.MinNameLength, ProductModelConstants.Common.MaxNameLength, nameof(Name));
 
     private void ValidateDescription(string description)
-        => Guard.ForStringLength(description, 2, 500, nameof(Description));
+        => Guard.ForStringLength(description, ProductModelConstants.Common.MinDescriptionLength, ProductModelConstants.Common.MaxDescriptionLength, nameof(Description));
 }
