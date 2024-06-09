@@ -19,12 +19,10 @@ public class CreateProductCommand : ProductCommand, IRequest<CreateProductRespon
             CreateProductCommand request,
             CancellationToken cancellationToken)
         {
-            var productType = Enumeration.FromValue<ProductType>(request.ProductType);
-
             var product = productFactory
                 .WithName(request.Name)
                 .WithDescription(request.Description)
-                .WithProductType(productType)
+                .WithProductType(Enumeration.FromValue<ProductType>(request.ProductType))
                 .WithPrice(request.Price.Amount, request.Price.Currency)
                 .WithWeight(request.Weight.Value, request.Weight.Unit)
                 .Build();

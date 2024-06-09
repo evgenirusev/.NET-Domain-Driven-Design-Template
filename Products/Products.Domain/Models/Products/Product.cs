@@ -45,15 +45,15 @@ public class Product : Entity<int>, IAggregateRoot
         return this;
     }
 
-    public Product UpdateWeight(Weight weight)
+    public Product UpdateWeight(decimal value, string unit)
     {
-        Weight = weight;
+        Weight = new Weight(value, unit);
         return this;
     }
 
-    public Product UpdatePrice(Price price)
+    public Product UpdatePrice(decimal amount, string currency)
     {
-        Price = price;
+        Price = new Price(amount, currency);
         return this;
     }
 
