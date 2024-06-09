@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
+builder
+    .Services
     .AddDomain()
     .AddApplication(builder.Configuration)
     .AddInfrastructure(builder.Configuration)
@@ -8,6 +9,8 @@ builder.Services
 
 var app = builder.Build();
 
-app.AddCommonAppComponents();
+app
+    .UseWebService(app.Environment)
+    .Initialize();
 
 app.Run();
