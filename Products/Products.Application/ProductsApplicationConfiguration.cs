@@ -1,11 +1,8 @@
-﻿namespace BettingSystem.Application.Betting;
-
-using System.Reflection;
-using Common;
+﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-public static class ApplicationConfiguration
+public static class ProductsApplicationConfiguration
 {
     private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
 

@@ -1,10 +1,4 @@
-﻿namespace BettingSystem.Application.Common.Behaviours;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 
 public class RequestValidationBehavior<TRequest, TResponse>
@@ -23,8 +17,7 @@ public class RequestValidationBehavior<TRequest, TResponse>
     {
         var context = new ValidationContext<TRequest>(request);
 
-        var errors = this
-            .validators
+        var errors = validators
             .Select(v => v.Validate(context))
             .SelectMany(result => result.Errors)
             .Where(f => f != null)

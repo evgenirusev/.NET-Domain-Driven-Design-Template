@@ -1,7 +1,4 @@
-﻿namespace BettingSystem.Application.Common;
-
-using System.Reflection;
-using Behaviours;
+﻿using System.Reflection;
 using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Configuration;

@@ -1,11 +1,10 @@
-using BettingSystem.Application.Betting;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddCommonWebComponents()
     .AddDomain()
-    .AddApplication(builder.Configuration);
+    .AddApplication(builder.Configuration)
+    .AddInfrastructure(builder.Configuration)
+    .AddWebComponents();
 
 var app = builder.Build();
 

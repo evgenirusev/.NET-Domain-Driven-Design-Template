@@ -12,5 +12,10 @@
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.3.0" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
     </ItemGroup>
 </Project>
