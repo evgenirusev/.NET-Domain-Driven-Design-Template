@@ -14,6 +14,21 @@ public class Supplier : Entity<int>, IAggregateRoot
         Address = address;
         Products = new HashSet<Product>();
     }
+    
+    private Supplier(
+        string name,
+        string contactEmail,
+        string contactPhoneNumber)
+    {
+        Validate(name, contactEmail, contactPhoneNumber);
+
+        Name = name;
+        ContactEmail = contactEmail;
+        ContactPhoneNumber = contactPhoneNumber;
+        
+        Address = default!;
+        Products = default!;
+    }
 
     public string Name { get; private set; }
     public string ContactEmail { get; private set; }
