@@ -23,12 +23,12 @@ public class Supplier : Entity<int>, IAggregateRoot
 
     private void Validate(string name, string contactEmail, string contactPhoneNumber)
     {
-        ValidateCompanyName(name);
+        ValidateName(name);
         ValidateContactEmail(contactEmail);
         ValidateContactPhoneNumber(contactPhoneNumber);
     }
 
-    private void ValidateCompanyName(string name)
+    private void ValidateName(string name)
         => Guard.ForStringLength(name, 2, 50, nameof(Name));
 
     private void ValidateContactEmail(string contactEmail)

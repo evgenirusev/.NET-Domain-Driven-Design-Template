@@ -27,7 +27,7 @@ public class Product : Entity<int>, IAggregateRoot
 
     public Product UpdateName(string name)
     {
-        ValidateCompanyName(name);
+        ValidateName(name);
         Name = name;
         return this;
     }
@@ -71,11 +71,11 @@ public class Product : Entity<int>, IAggregateRoot
 
     private void Validate(string name, string description)
     {
-        ValidateCompanyName(name);
+        ValidateName(name);
         ValidateDescription(description);
     }
 
-    private void ValidateCompanyName(string name)
+    private void ValidateName(string name)
         => Guard.ForStringLength(name, ProductModelConstants.Common.MinNameLength, ProductModelConstants.Common.MaxNameLength, nameof(Name));
 
     private void ValidateDescription(string description)
