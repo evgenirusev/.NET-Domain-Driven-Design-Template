@@ -1,10 +1,23 @@
-﻿public abstract class Entity<TId> where TId : struct
+﻿public abstract class Entity<TId> : IEntity
+    where TId : struct
 {
+    private readonly ICollection<IDomainEvent> events;
+
+    protected Entity() => events = new List<IDomainEvent>();
+
     public TId Id { get; private set; } = default;
+
+    public IReadOnlyCollection<IDomainEvent> Events
+        => events.ToList().AsReadOnly();
+
+    public void ClearEvents() => events.Clear();
+
+    protected void RaiseEvent(IDomainEvent domainEvent)
+        => events.Add(domainEvent);
 
     public override bool Equals(object? obj)
     {
-        if (!(obj is Entity<TId> other))
+        if (obj is not Entity<TId> other)
         {
             return false;
         }

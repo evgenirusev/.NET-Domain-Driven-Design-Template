@@ -9,4 +9,9 @@ public class ProductType : Enumeration
         : base(value, name)
     {
     }
+    
+    private ProductType(int value)
+        : this(value, FromValue<ProductType>(value).Name)
+    {
+    }
 }

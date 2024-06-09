@@ -5,8 +5,6 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> builder)
     {
-        builder.ToTable("Products");
-
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.Name)
@@ -23,6 +21,8 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.OwnsOne(p => p.Weight, w =>
         {
+            w.WithOwner();
+            
             w.Property(wt => wt.Value)
                 .IsRequired()
                 .HasColumnName("WeightValue");
@@ -35,6 +35,8 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.OwnsOne(p => p.Price, p =>
         {
+            p.WithOwner();
+            
             p.Property(pr => pr.Amount)
                 .IsRequired()
                 .HasColumnName("PriceAmount");

@@ -1,7 +1,7 @@
 public class Product : Entity<int>, IAggregateRoot
 {
     public HashSet<Supplier> Suppliers { get; private set; }
-
+    
     internal Product(
         string name,
         string description,
@@ -17,6 +17,20 @@ public class Product : Entity<int>, IAggregateRoot
         Price = price;
 
         Suppliers = new HashSet<Supplier>();
+    }
+    
+    private Product(
+        string name,
+        string description)
+    {
+        Validate(name, description);
+        Name = name;
+        Description = description;
+        ProductType = default!;
+        Weight = default!;
+        Price = default!;
+
+        Suppliers = default!;
     }
 
     public string Name { get; private set; }
