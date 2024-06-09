@@ -1,6 +1,9 @@
 # ASP.NET-Domain-Driven-Design-Template
 ASP.NET domain driven design template based on the Clean Architecture project structure.
 
+Migration script:
+dotnet ef migrations add InitialMigration --context "ProductDbContext" --project Products/Products.Infrastructure --startup-project Products/Products.Startup
+
 Things to document:
 1. internal properties in Domain. Only factories can instanciate domain objects.
 2. Validation - can use custom exceptions if needed
@@ -11,6 +14,9 @@ Things to document:
 5. Domain events
 6. Should add health checks? Consider it
 7. Scrutor for DI
+8. Migrations
+9. How to run the project
+10. Build with section
 
 Workflow:
 1. Using AI to generate common things

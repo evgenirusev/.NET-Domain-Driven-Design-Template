@@ -32,6 +32,7 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
                 
                 w.Property(wt => wt.Value)
                     .IsRequired()
+                    .HasPrecision(38, 15)
                     .HasColumnName("WeightValue");
 
                 w.Property(wt => wt.Unit)
@@ -47,6 +48,7 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
                 
                 p.Property(pr => pr.Amount)
                     .IsRequired()
+                    .HasPrecision(38, 15)
                     .HasColumnName("PriceAmount");
 
                 p.Property(pr => pr.Currency)
