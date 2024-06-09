@@ -7,4 +7,8 @@
         <RootNamespace>Template.Infrastructure</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
+      <ProjectReference Include="..\Products.Application\Products.Application.csproj" />
+    </ItemGroup>
 </Project>

@@ -76,8 +76,8 @@ public class Product : Entity<int>, IAggregateRoot
     }
 
     private void ValidateName(string name)
-        => Guard.ForStringLength(name, ProductModelConstants.Common.MinNameLength, ProductModelConstants.Common.MaxNameLength, nameof(Name));
+        => Guard.ForStringLength(name, ProductModelConstants.Product.MinNameLength, ProductModelConstants.Product.MaxNameLength, nameof(Name));
 
     private void ValidateDescription(string description)
-        => Guard.ForStringLength(description, ProductModelConstants.Common.MinDescriptionLength, ProductModelConstants.Common.MaxDescriptionLength, nameof(Description));
+        => Guard.ForStringLength(description, ProductModelConstants.Product.MinDescriptionLength, ProductModelConstants.Product.MaxDescriptionLength, nameof(Description));
 }

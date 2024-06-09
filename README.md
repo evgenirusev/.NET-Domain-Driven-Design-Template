@@ -11,3 +11,7 @@ Things to document:
 5. Domain events
 6. Should add health checks? Consider it
 7. Scrutor for DI
+
+Workflow:
+1. Using AI to generate common things
+2. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..
