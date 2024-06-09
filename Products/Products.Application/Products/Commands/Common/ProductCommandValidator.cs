@@ -6,17 +6,17 @@ public class ProductCommandValidator : AbstractValidator<ProductCommand>
     {
         RuleFor(b => b.Name)
             .NotEmpty().WithMessage("Name is required.")
-            .Length(ProductModelConstants.Common.MinNameLength, ProductModelConstants.Common.MaxNameLength)
-            .WithMessage($"Name must be between {ProductModelConstants.Common.MinNameLength} and {ProductModelConstants.Common.MaxNameLength} characters.");
+            .Length(ProductModelConstants.Product.MinNameLength, ProductModelConstants.Product.MaxNameLength)
+            .WithMessage($"Name must be between {ProductModelConstants.Product.MinNameLength} and {ProductModelConstants.Product.MaxNameLength} characters.");
 
         RuleFor(b => b.Description)
             .NotEmpty().WithMessage("Description is required.")
-            .Length(ProductModelConstants.Common.MinDescriptionLength, ProductModelConstants.Common.MaxDescriptionLength)
-            .WithMessage($"Description must be between {ProductModelConstants.Common.MinDescriptionLength} and {ProductModelConstants.Common.MaxDescriptionLength} characters.");
+            .Length(ProductModelConstants.Product.MinDescriptionLength, ProductModelConstants.Product.MaxDescriptionLength)
+            .WithMessage($"Description must be between {ProductModelConstants.Product.MinDescriptionLength} and {ProductModelConstants.Product.MaxDescriptionLength} characters.");
 
         RuleFor(b => b.Price.Amount)
             .NotEmpty().WithMessage("Price amount is required.")
-            .GreaterThan(ProductModelConstants.Common.Zero).WithMessage("Price amount must be greater than zero.")
+            .GreaterThan(CommonModelConstants.Zero).WithMessage("Price amount must be greater than zero.")
             .ScalePrecision(2, ProductModelConstants.Price.MaxAmountDigits)
             .WithMessage($"Price amount must have at most {ProductModelConstants.Price.MaxAmountDigits} digits.");
 
@@ -27,7 +27,7 @@ public class ProductCommandValidator : AbstractValidator<ProductCommand>
 
         RuleFor(b => b.Weight.Value)
             .NotEmpty().WithMessage("Weight value is required.")
-            .GreaterThan(ProductModelConstants.Common.Zero).WithMessage("Weight value must be greater than zero.")
+            .GreaterThan(CommonModelConstants.Zero).WithMessage("Weight value must be greater than zero.")
             .ScalePrecision(2, ProductModelConstants.Weight.MaxValueDigits)
             .WithMessage($"Weight value must have at most {ProductModelConstants.Weight.MaxValueDigits} digits.");
 
