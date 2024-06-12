@@ -17,6 +17,7 @@ Things to document:
 8. Migrations
 9. How to run the project
 10. Build with section
+11 - AUTOMAPPER - automatic mapping profile
 
 Workflow:
 1. Using AI to generate common things

@@ -15,6 +15,7 @@ public static class ApplicationConfiguration
                 configuration.GetSection(nameof(ApplicationSettings)),
                 options => options.BindNonPublicProperties = true)
             .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly))
+            .AddAutoMapperProfile(assembly)
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
     public static IServiceCollection AddEventConsumers(
@@ -27,4 +28,12 @@ public static class ApplicationConfiguration
                     .AssignableTo(typeof(IConsumer<>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
+
+    private static IServiceCollection AddAutoMapperProfile(
+        this IServiceCollection services, Assembly assembly)
+        => services
+            .AddAutoMapper(
+                (_, config) => config
+                    .AddProfile(new MappingProfile(assembly)),
+                Array.Empty<Assembly>());
 }

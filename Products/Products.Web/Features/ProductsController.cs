@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-[Authorize]
+// [Authorize]
 public class ProductsController : ApiController
 {
     [HttpGet]
-    public async Task<ActionResult> Test()
-    {
-        return Ok();
-    }
+    [Route(Id)]
+    public async Task<ActionResult<ProductResponse>> GetById(
+        [FromRoute] ProductDetailsQuery query)
+        => await Send(query);
 }
