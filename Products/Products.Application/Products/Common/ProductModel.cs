@@ -6,7 +6,6 @@ public record WeightRequest(decimal Value, string Unit);
 
 public class ProductModel : IMapFrom<Product>
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public int ProductType { get; set; }

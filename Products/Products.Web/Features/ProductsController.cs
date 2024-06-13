@@ -8,4 +8,9 @@ public class ProductsController : ApiController
     public async Task<ActionResult<ProductResponse>> GetById(
         [FromRoute] ProductDetailsQuery query)
         => await Send(query);
+    
+    [HttpPost]
+    public async Task<ActionResult<CreateProductResponse>> Create(
+        CreateProductCommand command)
+        => await Send(command);
 }

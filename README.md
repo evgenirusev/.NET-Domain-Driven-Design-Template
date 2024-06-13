@@ -20,5 +20,5 @@ Things to document:
 11 - AUTOMAPPER - automatic mapping profile
 
 Workflow:
-1. Using AI to generate common things
-2. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..
+1. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..
+2. Using AI to generate common things
