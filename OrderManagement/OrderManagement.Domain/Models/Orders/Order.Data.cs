@@ -5,7 +5,7 @@ internal class OrderData
     public IEnumerable<object> GetData()
     {
         var order1 = new Order(
-            customerId: Guid.NewGuid(),
+            customerId: 1,
             orderDate: DateTime.Now.AddDays(-5)
         );
 
@@ -20,7 +20,7 @@ internal class OrderData
         );
 
         var order2 = new Order(
-            customerId: Guid.NewGuid(),
+            customerId: 2,
             orderDate: DateTime.Now.AddDays(-3)
         );
 

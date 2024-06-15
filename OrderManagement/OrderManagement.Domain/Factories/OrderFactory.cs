@@ -1,12 +1,12 @@
 internal class OrderFactory : IOrderFactory
 {
-    private Guid customerId = default!;
+    private int customerId = default!;
     private DateTime orderDate = default!;
 
     private bool isCustomerIdSet = false;
     private bool isOrderDateSet = false;
 
-    public IOrderFactory WithCustomerId(Guid customerId)
+    public IOrderFactory WithCustomerId(int customerId)
     {
         this.customerId = customerId;
         isCustomerIdSet = true;

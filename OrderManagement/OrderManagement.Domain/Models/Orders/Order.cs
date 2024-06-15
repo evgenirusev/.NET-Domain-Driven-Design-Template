@@ -2,7 +2,7 @@ public class Order : Entity, IAggregateRoot
 {
     public HashSet<OrderItem> OrderItems { get; private set; }
 
-    public Order(Guid customerId, DateTime orderDate)
+    public Order(int customerId, DateTime orderDate)
     {
         ValidateCustomerId(customerId);
         ValidateOrderDate(orderDate);
@@ -13,7 +13,7 @@ public class Order : Entity, IAggregateRoot
         Status = OrderStatus.Pending;
     }
 
-    public Guid CustomerId { get; private set; }
+    public int CustomerId { get; private set; }
     public DateTime OrderDate { get; private set; }
     public OrderStatus Status { get; private set; }
 
@@ -43,11 +43,38 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    private void ValidateCustomerId(Guid customerId)
+    public Order UpdateCustomerId(int customerId)
     {
-        if (customerId.ToString().Length != OrderModelConstants.Order.MinCustomerIdLength)
+        ValidateCustomerId(customerId);
+        CustomerId = customerId;
+        return this;
+    }
+
+    public Order UpdateOrderDate(DateTime orderDate)
+    {
+        ValidateOrderDate(orderDate);
+        OrderDate = orderDate;
+        return this;
+    }
+
+    public Order UpdateOrderItem(int orderItemId, int productId, int quantity)
+    {
+        ValidateOrderItemQuantity(quantity);
+
+        var orderItem = OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+        if (orderItem != null)
         {
-            throw new ArgumentException("Invalid customer ID length.");
+            orderItem.UpdateProductId(productId);
+            orderItem.UpdateQuantity(quantity);
+        }
+        return this;
+    }
+
+    private void ValidateCustomerId(int customerId)
+    {
+        if (customerId < OrderModelConstants.Order.MinCustomerIdLength)
+        {
+            throw new ArgumentException("Invalid customer ID.");
         }
     }
 

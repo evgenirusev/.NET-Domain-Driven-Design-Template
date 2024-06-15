@@ -19,4 +19,9 @@ internal class OrderRepository : DataRepository<OrderManagementDbContext, Order>
     {
         throw new NotImplementedException();
     }
+
+    public Task<OrderResponse> GetDetailsById(int id, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }

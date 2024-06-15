@@ -14,6 +14,13 @@ public class OrderItem : Entity
     public int ProductId { get; private set; }
     public int Quantity { get; private set; }
 
+    public OrderItem UpdateProductId(int productId)
+    {
+        ValidateProductId(productId);
+        ProductId = productId;
+        return this;
+    }
+
     public OrderItem UpdateQuantity(int quantity)
     {
         ValidateQuantity(quantity);
