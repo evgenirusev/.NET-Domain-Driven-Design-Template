@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 
 internal class OrderRepository : DataRepository<OrderManagementDbContext, Order>,
-    IOrderDomainRepository
+    IOrderDomainRepository,
+    IOrderQueryRepository
 {
     private readonly IMapper mapper;
 
