@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-public class DeleteProductCommand : EntityCommand<int>, IRequest<Result>
+public class DeleteProductCommand : EntityCommand, IRequest<Result>
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Result>
     {

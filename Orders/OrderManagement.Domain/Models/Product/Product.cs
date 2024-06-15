@@ -1,4 +1,4 @@
-public class Product : Entity<int>, IAggregateRoot
+public class Product : Entity, IAggregateRoot
 {
     public Price Price { get; private set; }
     

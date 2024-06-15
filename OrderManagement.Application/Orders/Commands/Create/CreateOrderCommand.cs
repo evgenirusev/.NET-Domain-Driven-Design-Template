@@ -26,7 +26,7 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
 
             await orderRepository.Save(order, cancellationToken);
 
-            return new CreateProductResponse(product.Id);
+            return null;
         }
     }
 }

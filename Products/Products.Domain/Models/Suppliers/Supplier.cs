@@ -1,4 +1,4 @@
-public class Supplier : Entity<int>, IAggregateRoot
+public class Supplier : Entity, IAggregateRoot
 {
     internal Supplier(
         string name,

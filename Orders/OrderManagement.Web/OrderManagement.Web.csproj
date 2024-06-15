@@ -12,4 +12,8 @@
       <ProjectReference Include="..\..\OrderManagement.Application\OrderManagement.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\" />
+    </ItemGroup>
+
 </Project>

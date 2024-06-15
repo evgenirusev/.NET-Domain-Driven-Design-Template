@@ -1,9 +1,9 @@
 using FluentValidation;
 using OrderManagement.Application.Orders.Common;
 
-public class CreateOrderCommandValidator : AbstractValidator<OrderModel>
+public class OrderCommandValidator : AbstractValidator<OrderModel>
 {
-    public CreateOrderCommandValidator()
+    public OrderCommandValidator()
     {
         RuleForEach(c => c.OrderItems)
             .SetValidator(new OrderItemModelValidator());

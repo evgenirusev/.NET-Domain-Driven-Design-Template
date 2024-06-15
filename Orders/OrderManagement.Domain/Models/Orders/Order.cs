@@ -1,4 +1,4 @@
-public class Order : Entity<int>, IAggregateRoot
+public class Order : Entity, IAggregateRoot
 {
     private readonly List<OrderItem> orderItems;
 

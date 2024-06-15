@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-public class ProductDetailsQuery : EntityCommand<int>, IRequest<ProductResponse>
+public class ProductDetailsQuery : EntityCommand, IRequest<ProductResponse>
 {
     public class ProductDetailsQueryHandler : IRequestHandler<ProductDetailsQuery, ProductResponse>
     {

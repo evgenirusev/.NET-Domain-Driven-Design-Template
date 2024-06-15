@@ -1,4 +1,4 @@
-public class OrderItem : Entity<int>
+public class OrderItem : Entity
 {
     internal OrderItem(int orderId, int productId, int quantity)
     {

@@ -1,11 +1,10 @@
-﻿public abstract class Entity<TId> : IEntity
-    where TId : struct
+﻿public abstract class Entity : IEntity
 {
     private readonly ICollection<IDomainEvent> events;
 
     protected Entity() => events = new List<IDomainEvent>();
 
-    public TId Id { get; private set; } = default;
+    public int Id { get; private set; } = default;
 
     public IReadOnlyCollection<IDomainEvent> Events
         => events.ToList().AsReadOnly();
@@ -17,7 +16,7 @@
 
     public override bool Equals(object? obj)
     {
-        if (obj is not Entity<TId> other)
+        if (obj is not Entity other)
         {
             return false;
         }
@@ -40,7 +39,7 @@
         return Id.Equals(other.Id);
     }
 
-    public static bool operator ==(Entity<TId>? first, Entity<TId>? second)
+    public static bool operator ==(Entity? first, Entity? second)
     {
         if (first is null && second is null)
         {
@@ -55,7 +54,7 @@
         return first.Equals(second);
     }
 
-    public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
+    public static bool operator !=(Entity? first, Entity? second) => !(first == second);
 
     public override int GetHashCode() => (GetType().ToString() + Id).GetHashCode();
 }

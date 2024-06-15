@@ -1,12 +1,12 @@
-﻿public class EntityCommand<TId>
+﻿public class EntityCommand
 {
-    public TId Id { get; set; } = default!;
+    public int Id { get; set; } = default!;
 }
 
 public static class EntityCommandExtensions
 {
-    public static TCommand SetId<TCommand, TId>(this TCommand command, TId id)
-        where TCommand : EntityCommand<TId>
+    public static TCommand SetId<TCommand>(this TCommand command, int id)
+        where TCommand : EntityCommand
     {
         command.Id = id;
         return command;
