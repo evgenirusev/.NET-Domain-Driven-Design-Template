@@ -1,23 +1,34 @@
 using FluentValidation;
-using OrderManagement.Application.Orders.Common;
 
-public class OrderCommandValidator : AbstractValidator<OrderModel>
+public class OrderCommandValidator : AbstractValidator<OrderCommand>
 {
     public OrderCommandValidator()
     {
-        RuleForEach(c => c.OrderItems)
-            .SetValidator(new OrderItemModelValidator());
+        RuleFor(o => o.CustomerId)
+            .GreaterThan(0).WithMessage("Customer ID must be greater than zero.");
+
+        RuleFor(o => o.OrderDate)
+            .LessThanOrEqualTo(DateTime.Now).WithMessage("Order date cannot be in the future.");
+
+        RuleFor(o => o.OrderItems)
+            .NotEmpty().WithMessage("Order must contain at least one order item.")
+            .Must(orderItems => orderItems.Count >= OrderModelConstants.Order.MinOrderItems && orderItems.Count <= OrderModelConstants.Order.MaxOrderItems)
+            .WithMessage($"Order must contain between {OrderModelConstants.Order.MinOrderItems} and {OrderModelConstants.Order.MaxOrderItems} items.");
+
+        RuleForEach(o => o.OrderItems).SetValidator(new OrderItemValidator());
     }
 }
 
-public class OrderItemModelValidator : AbstractValidator<OrderItemModel>
+public class OrderItemValidator : AbstractValidator<OrderItemModel>
 {
-    public OrderItemModelValidator()
+    public OrderItemValidator()
     {
         RuleFor(oi => oi.ProductId)
-            .NotEmpty().WithMessage("Product ID is required.");
+            .GreaterThanOrEqualTo(OrderModelConstants.OrderItem.MinProductIdLength).WithMessage($"Product ID must be at least {OrderModelConstants.OrderItem.MinProductIdLength}.")
+            .LessThanOrEqualTo(OrderModelConstants.OrderItem.MaxProductIdLength).WithMessage($"Product ID must be at most {OrderModelConstants.OrderItem.MaxProductIdLength}.");
 
         RuleFor(oi => oi.Quantity)
-            .GreaterThan(0).WithMessage("Quantity must be greater than zero.");
+            .GreaterThanOrEqualTo(OrderModelConstants.OrderItem.MinQuantity).WithMessage($"Quantity must be at least {OrderModelConstants.OrderItem.MinQuantity}.")
+            .LessThanOrEqualTo(OrderModelConstants.OrderItem.MaxQuantity).WithMessage($"Quantity must be at most {OrderModelConstants.OrderItem.MaxQuantity}.");
     }
 }

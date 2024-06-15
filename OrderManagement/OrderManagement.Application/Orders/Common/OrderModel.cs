@@ -1,5 +1,4 @@
 using AutoMapper;
-using OrderManagement.Application.Orders.Common;
 
 public class OrderModel : IMapFrom<Order>
 {

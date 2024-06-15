@@ -26,6 +26,8 @@ Things to document:
 15. Resolve issue with DBInitializer comment
 16. Rename solution
 
+TODO: consider renaming back to Product and Orders because it's more intuitive.
+
 Workflow:
 1. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..
 

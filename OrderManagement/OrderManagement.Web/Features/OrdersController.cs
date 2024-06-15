@@ -10,7 +10,7 @@ public class OrdersController : ApiController
     [HttpPost]
     public async Task<ActionResult<CreateOrderResponse>> Create(CreateOrderCommand command)
         => await Send(command);
-    
+
     [HttpPut]
     [Route(Id)]
     public async Task<ActionResult> Update(UpdateOrderCommand command)
