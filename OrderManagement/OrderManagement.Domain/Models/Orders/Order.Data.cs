@@ -1,4 +1,4 @@
-internal class OrderData : IInitialData
+internal class OrderData
 {
     public Type EntityType => typeof(Order);
 
