@@ -22,6 +22,7 @@ Things to document:
 11 - AUTOMAPPER - automatic mapping profile
 12. Each project is responsible for registering its services via an 'Add' abstraction. (For example AddDomain)
 13. Bounded context separation via Repository
+14. TODO: remove secrets and explain where to set secret
 
 Workflow:
 1. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..
