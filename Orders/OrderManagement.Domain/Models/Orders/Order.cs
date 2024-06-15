@@ -1,6 +1,6 @@
 public class Order : Entity, IAggregateRoot
 {
-    private readonly List<OrderItem> orderItems;
+    public HashSet<OrderItem> OrderItems { get; private set; }
 
     public Order(Guid customerId, DateTime orderDate)
     {
@@ -9,7 +9,7 @@ public class Order : Entity, IAggregateRoot
 
         CustomerId = customerId;
         OrderDate = orderDate;
-        orderItems = new List<OrderItem>();
+        OrderItems = new HashSet<OrderItem>();
         Status = OrderStatus.Pending;
     }
 
@@ -17,24 +17,22 @@ public class Order : Entity, IAggregateRoot
     public DateTime OrderDate { get; private set; }
     public OrderStatus Status { get; private set; }
 
-    public IReadOnlyCollection<OrderItem> OrderItems => orderItems.AsReadOnly();
-
     public Order AddOrderItem(int productId, int quantity)
     {
         ValidateOrderItemQuantity(quantity);
 
         var orderItem = new OrderItem(Id, productId, quantity);
-        orderItems.Add(orderItem);
+        OrderItems.Add(orderItem);
 
         return this;
     }
 
     public Order RemoveOrderItem(int orderItemId)
     {
-        var orderItem = orderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+        var orderItem = OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
         if (orderItem != null)
         {
-            orderItems.Remove(orderItem);
+            OrderItems.Remove(orderItem);
         }
         return this;
     }

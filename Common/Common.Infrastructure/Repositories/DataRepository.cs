@@ -2,7 +2,7 @@
 
 public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TEntity>
     where TDbContext : DbContext
-    where TEntity : class, IAggregateRoot
+    where TEntity : Entity, IAggregateRoot
 {
     protected DataRepository(TDbContext db) => Data = db;
 
@@ -12,12 +12,14 @@ public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TE
 
     protected IQueryable<TEntity> AllAsNoTracking() => All().AsNoTracking();
 
-    public async Task Save(
+    public async Task<int> Save(
         TEntity entity,
         CancellationToken cancellationToken = default)
     {
         Data.Update(entity);
 
         await Data.SaveChangesAsync(cancellationToken);
+
+        return entity.Id;
     }
 }

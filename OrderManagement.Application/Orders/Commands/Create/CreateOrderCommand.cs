@@ -23,10 +23,13 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
                 .WithOrderDate(request.OrderDate)
                 .WithCustomerId(request.CustomerId)
                 .Build();
+            
+            request.OrderItems.ForEach(orderItem =>
+            {
+                order.AddOrderItem(orderItem.ProductId, orderItem.Quantity);
+            });
 
-            await orderRepository.Save(order, cancellationToken);
-
-            return null;
+            return new CreateOrderResponse(await orderRepository.Save(order, cancellationToken));
         }
     }
 }
