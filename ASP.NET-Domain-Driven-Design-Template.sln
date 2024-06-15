@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Web", "Products\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Infrastructure", "Products\Products.Infrastructure\Products.Infrastructure.csproj", "{72B680F2-0573-459D-8196-DAC5D271FE78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Application", "OrderManagement.Application\OrderManagement.Application.csproj", "{4DAD453C-DA99-4F0E-B225-61F766429D14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{72B680F2-0573-459D-8196-DAC5D271FE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B680F2-0573-459D-8196-DAC5D271FE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B680F2-0573-459D-8196-DAC5D271FE78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DAD453C-DA99-4F0E-B225-61F766429D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DAD453C-DA99-4F0E-B225-61F766429D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DAD453C-DA99-4F0E-B225-61F766429D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DAD453C-DA99-4F0E-B225-61F766429D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26840F2F-9538-486E-9588-71E7BED381F7} = {93C5B223-8D19-4D2F-B217-4E3226F6E135}
@@ -105,5 +111,6 @@ Global
 		{4FFE5DE2-96DF-471D-B8E5-004AA4D986E5} = {D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}
 		{7C9BF631-0086-4A3B-8888-A24A89E26734} = {D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}
 		{72B680F2-0573-459D-8196-DAC5D271FE78} = {D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}
+		{4DAD453C-DA99-4F0E-B225-61F766429D14} = {8D8DD612-9136-481A-AC60-B565596AFC1D}
 	EndGlobalSection
 EndGlobal

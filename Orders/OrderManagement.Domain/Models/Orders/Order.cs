@@ -23,7 +23,7 @@ public class Order : Entity<int>, IAggregateRoot
     {
         ValidateOrderItemQuantity(quantity);
 
-        var orderItem = new OrderItem(productId, quantity);
+        var orderItem = new OrderItem(Id, productId, quantity);
         orderItems.Add(orderItem);
 
         return this;

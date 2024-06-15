@@ -1,14 +1,16 @@
 public class OrderItem : Entity<int>
 {
-    internal OrderItem(int productId, int quantity)
+    internal OrderItem(int orderId, int productId, int quantity)
     {
         ValidateProductId(productId);
         ValidateQuantity(quantity);
 
+        OrderId = orderId;
         ProductId = productId;
         Quantity = quantity;
     }
 
+    public int OrderId { get; private set; }
     public int ProductId { get; private set; }
     public int Quantity { get; private set; }
 
