@@ -3,7 +3,7 @@ public class Price : ValueObject
     public decimal Amount { get; }
     public string Currency { get; }
 
-    internal Price(decimal amount, string currency)
+    public Price(decimal amount, string currency)
     {
         Validate(amount, currency);
 

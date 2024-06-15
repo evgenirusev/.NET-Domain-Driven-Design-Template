@@ -18,20 +18,6 @@ public class Product : Entity<int>, IAggregateRoot
 
         Suppliers = new HashSet<Supplier>();
     }
-    
-    private Product(
-        string name,
-        string description)
-    {
-        Validate(name, description);
-        Name = name;
-        Description = description;
-        ProductType = default!;
-        Weight = default!;
-        Price = default!;
-
-        Suppliers = default!;
-    }
 
     public string Name { get; private set; }
     public string Description { get; private set; }
