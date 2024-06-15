@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
-      <ProjectReference Include="..\..\OrderManagement.Application\OrderManagement.Application.csproj" />
+        <ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
+        <ProjectReference Include="..\OrderManagement.Application\OrderManagement.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
