@@ -24,6 +24,7 @@ Things to document:
 13. Bounded context separation via Repository
 14. TODO: remove secrets and explain where to set secret
 15. Resolve issue with DBInitializer comment
+16. Rename solution
 
 Workflow:
 1. Workflow to create a use case - starting from domain, controller, use case, repository, configuration etc..

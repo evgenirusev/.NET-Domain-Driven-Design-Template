@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-public static class ApplicationBuilderExtensions
+﻿public static class ApplicationBuilderExtensions
 {
     public static IApplicationBuilder UseWebService(
         this IApplicationBuilder app,
@@ -22,7 +17,7 @@ public static class ApplicationBuilderExtensions
             .UseEndpoints(endpoints => endpoints
                 .MapControllers());
 
-    public static IApplicationBuilder UseExceptionHandling(
+    private static IApplicationBuilder UseExceptionHandling(
         this IApplicationBuilder app,
         IWebHostEnvironment env)
     {

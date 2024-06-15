@@ -8,13 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
-      <ProjectReference Include="..\Products.Domain\Products.Domain.csproj" />
+      <PackageReference Include="FluentValidation" Version="11.9.1" />
+      <PackageReference Include="MediatR" Version="12.3.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.9.1" />
-      <PackageReference Include="MediatR" Version="12.3.0" />
+      <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+      <ProjectReference Include="..\ProductCatalog.Domain\ProductCatalog.Domain.csproj" />
     </ItemGroup>
     
 </Project>

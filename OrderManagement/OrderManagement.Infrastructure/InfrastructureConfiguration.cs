@@ -9,11 +9,11 @@ public static class InfrastructureConfiguration
         // Events
     ];
 
-    public static IServiceCollection OAddInfrastructure(
+    public static IServiceCollection AddOrderManagementInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddCommonInfrastructure<OrderManagementDbContext>(
+            .AddDBContext<OrderManagementDbContext>(
                 configuration,
                 Assembly.GetExecutingAssembly())
             .AddTransient<IDbInitializer, OrderManagementDbInitializer>();

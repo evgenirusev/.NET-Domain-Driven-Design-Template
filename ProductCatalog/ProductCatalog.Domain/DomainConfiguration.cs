@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class DomainConfiguration
 {
-    public static IServiceCollection PAddDomain(
+    public static IServiceCollection AddProductCatalogDomain(
         this IServiceCollection services)
         => services
             .AddCommonDomain(

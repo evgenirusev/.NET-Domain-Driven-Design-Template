@@ -8,9 +8,25 @@ public static class WebConfiguration
     public static IServiceCollection AddWebComponents(this IServiceCollection services,
         Type applicationConfigurationType)
     {
-        services.AddFluentValidationAutoValidation()
+        services
+            .AddFluentValidationAutoValidation()
             .AddValidatorsFromAssemblyContaining(applicationConfigurationType)
             .AddFluentValidationClientsideAdapters();
+
+        return services;
+    }
+
+    public static IServiceCollection AddModelBinders(
+        this IServiceCollection services)
+    {
+        services
+            .AddControllers(options => options
+                .ModelBinderProviders
+                .Insert(0, new ImageModelBinderProvider()));
+
+        services
+            .Configure<ApiBehaviorOptions>(options => options
+                .SuppressModelStateInvalidFilter = true);
 
         return services;
     }

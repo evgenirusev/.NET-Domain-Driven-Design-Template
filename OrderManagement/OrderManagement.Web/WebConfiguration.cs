@@ -2,7 +2,7 @@
 
 public static class WebConfiguration
 {
-    public static IServiceCollection OAddWebComponents(
+    public static IServiceCollection AddOrderManagementWebComponents(
         this IServiceCollection services)
         => services.AddWebComponents(
             typeof(OrderManagementApplicationConfiguration));

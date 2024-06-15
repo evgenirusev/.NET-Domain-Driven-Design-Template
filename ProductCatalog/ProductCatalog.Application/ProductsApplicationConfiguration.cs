@@ -6,7 +6,7 @@ public static class ProductsApplicationConfiguration
 {
     private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
 
-    public static IServiceCollection PAddApplication(
+    public static IServiceCollection AddProductCatalogApplication(
         this IServiceCollection services,
         IConfiguration configuration)
         => services

@@ -13,7 +13,7 @@ using GreenPipes;
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddCommonInfrastructure<TDbContext>(
+    public static IServiceCollection AddDBContext<TDbContext>(
         this IServiceCollection services,
         IConfiguration configuration,
         Assembly assembly)
@@ -79,37 +79,7 @@ public static class InfrastructureConfiguration
 
         return services;
     }
-
-    private static IServiceCollection AddDatabase<TDbContext>(
-        this IServiceCollection services,
-        IConfiguration configuration)
-        where TDbContext : DbContext
-        => services
-            .AddScoped<DbContext, TDbContext>()
-            .AddDbContext<TDbContext>(options => options
-                .UseSqlServer(
-                    configuration.GetDefaultConnectionString(),
-                    sqlOptions => sqlOptions
-                        .EnableRetryOnFailure(
-                            maxRetryCount: 10,
-                            maxRetryDelay: TimeSpan.FromSeconds(30),
-                            errorNumbersToAdd: null)
-                        .MigrationsAssembly(
-                            typeof(TDbContext).Assembly.FullName)));
-
-    internal static IServiceCollection AddRepositories(
-        this IServiceCollection services,
-        Assembly assembly)
-        => services
-            .Scan(scan => scan
-                .FromAssemblies(assembly)
-                .AddClasses(classes => classes
-                    .AssignableTo(typeof(IDomainRepository<>))
-                    .AssignableTo(typeof(IQueryRepository<>)))
-                .AsImplementedInterfaces()
-                .WithTransientLifetime());
-
-    // TODO: was made public. Should be private. Reconsider project structure once you workout running the solution.
+    
     public static IServiceCollection AddTokenAuthentication(
         this IServiceCollection services,
         IConfiguration configuration)
@@ -143,6 +113,35 @@ public static class InfrastructureConfiguration
 
         return services;
     }
+
+    private static IServiceCollection AddDatabase<TDbContext>(
+        this IServiceCollection services,
+        IConfiguration configuration)
+        where TDbContext : DbContext
+        => services
+            .AddScoped<DbContext, TDbContext>()
+            .AddDbContext<TDbContext>(options => options
+                .UseSqlServer(
+                    configuration.GetDefaultConnectionString(),
+                    sqlOptions => sqlOptions
+                        .EnableRetryOnFailure(
+                            maxRetryCount: 10,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null)
+                        .MigrationsAssembly(
+                            typeof(TDbContext).Assembly.FullName)));
+
+    internal static IServiceCollection AddRepositories(
+        this IServiceCollection services,
+        Assembly assembly)
+        => services
+            .Scan(scan => scan
+                .FromAssemblies(assembly)
+                .AddClasses(classes => classes
+                    .AssignableTo(typeof(IDomainRepository<>))
+                    .AssignableTo(typeof(IQueryRepository<>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
 
     private static IServiceCollection AddHangfireDatabase(
         this IServiceCollection services,

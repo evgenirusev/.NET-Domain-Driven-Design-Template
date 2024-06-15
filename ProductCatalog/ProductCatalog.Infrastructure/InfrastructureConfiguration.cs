@@ -9,11 +9,11 @@ public static class InfrastructureConfiguration
         // Events
     ];
 
-    public static IServiceCollection PAddInfrastructure(
+    public static IServiceCollection AddProductCatalogInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddCommonInfrastructure<ProductDbContext>(
+            .AddDBContext<ProductDbContext>(
                 configuration,
                 Assembly.GetExecutingAssembly())
             .AddTransient<IDbInitializer, ProductDbInitializer>();
