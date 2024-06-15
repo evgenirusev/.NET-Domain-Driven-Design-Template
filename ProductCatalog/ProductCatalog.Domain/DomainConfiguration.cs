@@ -6,6 +6,5 @@ public static class DomainConfiguration
     public static IServiceCollection AddProductCatalogDomain(
         this IServiceCollection services)
         => services
-            .AddCommonDomain(
-                Assembly.GetExecutingAssembly());
+            .AddCommonDomain(Assembly.GetExecutingAssembly());
 }

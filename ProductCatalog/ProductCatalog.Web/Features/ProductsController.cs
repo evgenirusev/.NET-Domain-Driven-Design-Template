@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-// [Authorize]
 public class ProductsController : ApiController
 {
     [HttpGet]
