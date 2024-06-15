@@ -2,8 +2,8 @@
 
 public static class WebConfiguration
 {
-    public static IServiceCollection AddWebComponents(
+    public static IServiceCollection PAddWebComponents(
         this IServiceCollection services)
-        => services.AddCommonWebComponents(
+        => services.AddWebComponents(
             typeof(ProductsApplicationConfiguration));
 }

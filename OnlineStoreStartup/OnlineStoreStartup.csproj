@@ -4,12 +4,14 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>OrderManagement.Startup</RootNamespace>
+        <RootNamespace>WebApplication1</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Products.Infrastructure\Products.Infrastructure.csproj" />
-      <ProjectReference Include="..\Products.Web\Products.Web.csproj" />
+      <ProjectReference Include="..\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
+      <ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
+      <ProjectReference Include="..\Products\Products.Infrastructure\Products.Infrastructure.csproj" />
+      <ProjectReference Include="..\Products\Products.Web\Products.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>

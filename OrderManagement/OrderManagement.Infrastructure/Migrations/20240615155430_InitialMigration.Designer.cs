@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Orders.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20240615153937_RemoveProductFromOrdersDBContext")]
-    partial class RemoveProductFromOrdersDBContext
+    [Migration("20240615155430_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,7 +9,7 @@ public static class InfrastructureConfiguration
         // Events
     ];
 
-    public static IServiceCollection AddInfrastructure(
+    public static IServiceCollection OAddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
         => services

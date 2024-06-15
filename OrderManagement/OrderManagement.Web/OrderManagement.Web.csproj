@@ -8,10 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Features\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj" />
       <ProjectReference Include="..\OrderManagement.Application\OrderManagement.Application.csproj" />
     </ItemGroup>

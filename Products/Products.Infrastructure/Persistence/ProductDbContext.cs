@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 internal class ProductDbContext : DbContext

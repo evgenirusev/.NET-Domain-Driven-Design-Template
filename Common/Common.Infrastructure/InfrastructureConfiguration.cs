@@ -20,7 +20,6 @@ public static class InfrastructureConfiguration
         where TDbContext : DbContext
         => services
             .AddDatabase<TDbContext>(configuration)
-            .AddTokenAuthentication(configuration)
             .AddRepositories(assembly);
 
     public static IServiceCollection AddEvents(
@@ -110,7 +109,8 @@ public static class InfrastructureConfiguration
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
-    private static IServiceCollection AddTokenAuthentication(
+    // TODO: was made public. Should be private. Reconsider project structure once you workout running the solution.
+    public static IServiceCollection AddTokenAuthentication(
         this IServiceCollection services,
         IConfiguration configuration)
     {
