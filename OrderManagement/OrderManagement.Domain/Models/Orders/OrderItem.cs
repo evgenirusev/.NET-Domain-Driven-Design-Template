@@ -30,9 +30,9 @@ public class OrderItem : Entity
 
     private void ValidateProductId(int productId)
     {
-        if (productId < OrderModelConstants.OrderItem.MinProductIdLength || productId > OrderModelConstants.OrderItem.MaxProductIdLength)
+        if (productId < OrderModelConstants.OrderItem.MinProductIdLength)
         {
-            throw new ArgumentException($"Product ID length must be between {OrderModelConstants.OrderItem.MinProductIdLength} and {OrderModelConstants.OrderItem.MaxProductIdLength}.");
+            throw new ArgumentException($"Product ID length must be greater than {OrderModelConstants.OrderItem.MinProductIdLength}.");
         }
     }
 

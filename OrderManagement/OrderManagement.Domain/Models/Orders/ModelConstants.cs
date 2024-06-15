@@ -4,14 +4,11 @@ public class OrderModelConstants
     {
         public const int MinOrderItems = 1;
         public const int MaxOrderItems = 100;
-        public const int MinCustomerIdLength = 36; // Assuming GUID length for customer ID
-        public const int MaxCustomerIdLength = 36; // Assuming GUID length for customer ID
     }
 
     public class OrderItem
     {
         public const int MinProductIdLength = 1;
-        public const int MaxProductIdLength = 50; // Adjust based on your product ID length
         public const int MinQuantity = 1;
         public const int MaxQuantity = 1000;
     }

@@ -72,7 +72,7 @@ public class Order : Entity, IAggregateRoot
 
     private void ValidateCustomerId(int customerId)
     {
-        if (customerId < OrderModelConstants.Order.MinCustomerIdLength)
+        if (customerId < 1)
         {
             throw new ArgumentException("Invalid customer ID.");
         }

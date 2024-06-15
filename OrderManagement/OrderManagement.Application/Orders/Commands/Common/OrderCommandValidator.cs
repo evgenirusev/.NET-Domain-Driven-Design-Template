@@ -24,8 +24,8 @@ public class OrderItemValidator : AbstractValidator<OrderItemModel>
     public OrderItemValidator()
     {
         RuleFor(oi => oi.ProductId)
-            .GreaterThanOrEqualTo(OrderModelConstants.OrderItem.MinProductIdLength).WithMessage($"Product ID must be at least {OrderModelConstants.OrderItem.MinProductIdLength}.")
-            .LessThanOrEqualTo(OrderModelConstants.OrderItem.MaxProductIdLength).WithMessage($"Product ID must be at most {OrderModelConstants.OrderItem.MaxProductIdLength}.");
+            .GreaterThanOrEqualTo(OrderModelConstants.OrderItem.MinProductIdLength)
+            .WithMessage($"Product ID must be at least {OrderModelConstants.OrderItem.MinProductIdLength}.");
 
         RuleFor(oi => oi.Quantity)
             .GreaterThanOrEqualTo(OrderModelConstants.OrderItem.MinQuantity).WithMessage($"Quantity must be at least {OrderModelConstants.OrderItem.MinQuantity}.")
