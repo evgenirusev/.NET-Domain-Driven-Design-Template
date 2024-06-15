@@ -7,4 +7,9 @@
         <RootNamespace>Orders.Web</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj" />
+      <ProjectReference Include="..\..\OrderManagement.Application\OrderManagement.Application.csproj" />
+    </ItemGroup>
+
 </Project>
