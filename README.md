@@ -1,9 +1,10 @@
+# .NET Domain Driven Design implemented with Clean Architecture and Vertical slices.
+The goal of this template is to provide a template for building highly decoupled monolithic .NET applications that can be easily extracted into microservices if the required by your business needs.
+Bounded Contexts separation - each bounded context is separated into its own separate project, hence highly reducing the probability of coupling between domains. To avoid having to deal with the overhead of managing multiple micro service deployments for each domain, the solution builds all of the contexts through the StartupProject, that way your development teams can gain the rapid development speed of using a monolith, while at the same time restricting the domains to be coupled with each other due to the domain separation by project.
+
 <div align="center">
   <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
 </div>
-
-# ASP.NET-Domain-Driven-Design-Template
-ASP.NET domain driven design template based on the Clean Architecture project structure.
 
 Migration script:
 dotnet ef migrations add InitialMigration --context "ProductDbContext" --project Products/Products.Infrastructure --startup-project Products/Products.Startup
@@ -12,7 +13,7 @@ Key benefits to this template:
 1. Complete separation of bounded contexts via API and Event Sourcing while still being part of a single solution and a single database. Allows for very quick development and a very easy migration to microservices. Making bounded context violations is very difficult due to the separation of the contexts in different projects.
 
 Things to document:
-1. internal properties in Domain. Only factories can instanciate domain objects.
+1. internal proeperties in Domain. Only factories can instanciate domain objects.
 2. Validation - can use custom exceptions if needed
 3. Repositories - query and domain. Explain diff.
 	Query repository return Response objects. They must reside in Application because it needs to know about the response. 
