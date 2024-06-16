@@ -17,10 +17,10 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalS
             .TotalStatistics
             .SingleOrDefaultAsync(cancellationToken);
 
+        // TODO: Create statistics using DataInitializer and remove this condition
         if (statistics == null)
         {
-            statistics = new TotalStatistics();
-            await Data.AddAsync(statistics);
+            return;
         }
         
         statistics.IncrementTotalOrders();
@@ -34,10 +34,10 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalS
             .TotalStatistics
             .SingleOrDefaultAsync(cancellationToken);
 
+        // TODO: Create statistics using DataInitializer and remove this condition
         if (statistics == null)
         {
-            statistics = new TotalStatistics();
-            await Data.AddAsync(statistics);
+            return;
         }
         
         statistics.IncrementTotalProducts();

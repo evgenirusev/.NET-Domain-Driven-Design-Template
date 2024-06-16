@@ -30,8 +30,10 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
             {
                 order.AddOrderItem(orderItem.ProductId, orderItem.Quantity);
             });
+            
+            await orderRepository.Save(order, cancellationToken);
 
-            return new CreateOrderResponse(await orderRepository.Save(order, cancellationToken));
+            return new CreateOrderResponse(order.Id);
         }
     }
 }

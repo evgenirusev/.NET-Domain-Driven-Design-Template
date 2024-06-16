@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TEntity>
-    where TDbContext : DbContext
+    where TDbContext : BaseDBContext
     where TEntity : Entity, IAggregateRoot
 {
     protected DataRepository(TDbContext db) => Data = db;
@@ -12,14 +12,12 @@ public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TE
 
     protected IQueryable<TEntity> AllAsNoTracking() => All().AsNoTracking();
 
-    public async Task<Guid> Save(
+    public async Task Save(
         TEntity entity,
         CancellationToken cancellationToken = default)
     {
         Data.Update(entity);
 
         await Data.SaveChangesAsync(cancellationToken);
-
-        return entity.Id;
     }
 }
