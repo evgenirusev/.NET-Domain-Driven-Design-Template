@@ -4,7 +4,8 @@ ASP.NET domain driven design template based on the Clean Architecture project st
 Migration script:
 dotnet ef migrations add InitialMigration --context "ProductDbContext" --project Products/Products.Infrastructure --startup-project Products/Products.Startup
 
-TODO: rename Product to ProductCatalog
+Key benefits to this template:
+1. Complete separation of bounded contexts via API and Event Sourcing while still being part of a single solution and a single database. Allows for very quick development and a very easy migration to microservices. Making bounded context violations is very difficult due to the separation of the contexts in different projects.
 
 Things to document:
 1. internal properties in Domain. Only factories can instanciate domain objects.

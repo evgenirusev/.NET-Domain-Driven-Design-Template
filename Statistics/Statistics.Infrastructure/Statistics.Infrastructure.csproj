@@ -11,4 +11,8 @@
       <ProjectReference Include="..\Statistics.Application\Statistics.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
+
 </Project>

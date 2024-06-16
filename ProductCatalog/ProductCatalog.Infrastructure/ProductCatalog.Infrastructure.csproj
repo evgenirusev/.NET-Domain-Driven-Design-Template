@@ -22,5 +22,9 @@
       <ProjectReference Include="..\..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
       <ProjectReference Include="..\ProductCatalog.Application\ProductCatalog.Application.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
 
 </Project>
