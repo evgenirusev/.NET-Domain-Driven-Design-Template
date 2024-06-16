@@ -16,6 +16,7 @@ builder
 
 builder.Services
     .AddTokenAuthentication(builder.Configuration)
+    .AddEventSourcing()
     .AddModelBinders()
     .AddSwaggerGen(c =>
     {

@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddDBContext<TDbContext>(
+    public static IServiceCollection AddDBStorage<TDbContext>(
         this IServiceCollection services,
         IConfiguration configuration,
         Assembly assembly)
@@ -51,6 +50,9 @@ public static class InfrastructureConfiguration
 
         return services;
     }
+    
+    public static IServiceCollection AddEventSourcing(this IServiceCollection services)
+        => services.AddTransient<IEventDispatcher, EventDispatcher>();
 
     private static IServiceCollection AddDatabase<TDbContext>(
         this IServiceCollection services,

@@ -27,6 +27,7 @@ Things to document:
 16. Rename solution
 17 Create aggregator solution if there is a solution that can't fit existing context, or just merge contexts.
 18. Bounded contests - think of them like microservices within a single solution.
+19. add unit tests
 
 TODO: consider renaming back to Product and Orders because it's more intuitive.
 
