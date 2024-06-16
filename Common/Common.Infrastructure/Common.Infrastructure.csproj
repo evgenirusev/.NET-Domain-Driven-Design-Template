@@ -10,13 +10,14 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.6" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
-        <PackageReference Include="Hangfire.AspNetCore" Version="1.8.12" />
-        <PackageReference Include="Hangfire.Core" Version="1.8.12" />
-        <PackageReference Include="Hangfire.SqlServer" Version="1.8.12" />
         <PackageReference Include="SixLabors.ImageSharp" Version="3.1.4" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Events\" />
     </ItemGroup>
 </Project>

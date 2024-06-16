@@ -10,6 +10,5 @@ public static class OrderManagementApplicationConfiguration
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddEventConsumers(Assembly)
             .AddCommonApplication(configuration, Assembly);
 }

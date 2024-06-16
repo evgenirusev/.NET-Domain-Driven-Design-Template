@@ -19,11 +19,13 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
             CreateOrderCommand request,
             CancellationToken cancellationToken)
         {
+            // TODO: validate CustomerId with an API call
+
             var order = orderFactory
                 .WithOrderDate(request.OrderDate)
                 .WithCustomerId(request.CustomerId)
                 .Build();
-            
+
             request.OrderItems.ForEach(orderItem =>
             {
                 order.AddOrderItem(orderItem.ProductId, orderItem.Quantity);

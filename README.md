@@ -25,6 +25,8 @@ Things to document:
 14. TODO: remove secrets and explain where to set secret
 15. Resolve issue with DBInitializer comment
 16. Rename solution
+17 Create aggregator solution if there is a solution that can't fit existing context, or just merge contexts.
+18. Bounded contests - think of them like microservices within a single solution.
 
 TODO: consider renaming back to Product and Orders because it's more intuitive.
 

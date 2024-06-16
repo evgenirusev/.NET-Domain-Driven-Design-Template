@@ -10,6 +10,5 @@ public static class ProductsApplicationConfiguration
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddEventConsumers(Assembly)
             .AddCommonApplication(configuration, Assembly);
 }
