@@ -1,4 +1,4 @@
-﻿internal interface IEventDispatcher
+﻿public interface IEventDispatcher
 {
     Task Dispatch(IDomainEvent domainEvent);
 }

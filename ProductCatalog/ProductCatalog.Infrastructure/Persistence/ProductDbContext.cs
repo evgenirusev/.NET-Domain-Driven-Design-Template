@@ -1,20 +1,18 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
-internal class ProductDbContext : DbContext
+internal class ProductDbContext(
+    DbContextOptions<ProductDbContext> options,
+    IEventDispatcher eventDispatcher)
+    : BaseDBContext(options, eventDispatcher)
 {
-    public ProductDbContext(DbContextOptions<ProductDbContext> options)
-        : base(options)
+    public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<Product> Products { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-    }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-    public DbSet<Supplier> Suppliers { get; set; } = default!;
-    public DbSet<Product> Products { get; set; } = default!;
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-        base.OnModelCreating(builder);
+        base.OnModelCreating(modelBuilder);
     }
 }
