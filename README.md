@@ -13,7 +13,7 @@ Key Features:
 - Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 - Set a connection string for your database
 
-## Core Philosophy
+## :bulb: Core Philosophy
 Most DDD project templates fail to prevent unintentional coupling of bounded contexts. Those that do address this issue often separate bounded contexts into independent projects. While this approach avoids coupling, it introduces significant DevOps overhead, such as microservice orchestration, service discovery, and common NuGet package management. Our template resolves coupling issues by separating contexts into individual projects, but ensures they all run within a single binary, thus avoiding excessive DevOps complexity.
 
 ### Domain Modeling and Development Process
@@ -29,6 +29,18 @@ Factories and Repositories serve as crucial anti-corruption layers, complementin
 
 ### Communication Between Bounded Contexts
 Contexts communicate through event sourcing or API calls.
+
+## :construction_worker: Built with
+
+- [.NET Core 8](https://github.com/dotnet/core) 
+- [ASP.NET Core 8](https://github.com/dotnet/aspnetcore)
+- [Entity Framework Core 8](https://github.com/dotnet/efcore)
+- [MediatR](https://github.com/jbogard/MediatR)
+- [FluentValidation](https://github.com/FluentValidation/FluentValidation)
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+- [Scrutor](https://github.com/khellang/Scrutor)
+- [xUnit](https://github.com/xunit/xunit)
+- [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
 
 Things to document:
 1. internal proeperties in Domain. Only factories can instanciate domain objects.
