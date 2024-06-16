@@ -11,17 +11,17 @@ internal class ProductRepository : DataRepository<ProductDbContext, Product>,
         : base(db)
         => this.mapper = mapper;
 
-    public async Task<Product?> Find(int id, CancellationToken cancellationToken = default)
+    public async Task<Product?> Find(Guid id, CancellationToken cancellationToken = default)
         => await All()
             .Include(b => b.Suppliers)
             .FirstOrDefaultAsync(b => b.Id == id, cancellationToken);
 
-    public async Task<ProductResponse> GetDetailsById(int id, CancellationToken cancellationToken = default)
+    public async Task<ProductResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
         => await mapper
             .ProjectTo<ProductResponse>(AllAsNoTracking()
                 .Include(b => b.Suppliers)).FirstAsync();
     
-    public async Task Delete(int id, CancellationToken cancellationToken = default)
+    public async Task Delete(Guid id, CancellationToken cancellationToken = default)
     {
         var product = await Data.Products.FindAsync(id);
 

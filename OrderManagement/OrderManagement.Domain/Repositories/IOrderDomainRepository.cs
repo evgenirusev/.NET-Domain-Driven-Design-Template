@@ -1,5 +1,5 @@
 public interface IOrderDomainRepository : IDomainRepository<Order>
 {
-    Task<Order> Find(int id, CancellationToken cancellationToken = default);
-    Task Delete(int id, CancellationToken cancellationToken = default);
+    Task<Order> Find(Guid id, CancellationToken cancellationToken = default);
+    Task Delete(Guid id, CancellationToken cancellationToken = default);
 }

@@ -10,17 +10,17 @@ internal class OrderRepository : DataRepository<OrderManagementDbContext, Order>
         : base(db)
         => this.mapper = mapper;
     
-    public Task<Order> Find(int id, CancellationToken cancellationToken = default)
+    public Task<Order> Find(Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task Delete(int id, CancellationToken cancellationToken = default)
+    public Task Delete(Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<OrderResponse> GetDetailsById(int id, CancellationToken cancellationToken = default)
+    public Task<OrderResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

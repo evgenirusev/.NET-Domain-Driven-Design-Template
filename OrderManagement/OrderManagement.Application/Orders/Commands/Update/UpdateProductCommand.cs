@@ -2,7 +2,7 @@ using MediatR;
 
 public class UpdateOrderCommand : OrderCommand, IRequest<Result>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     
     public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Result>
     {

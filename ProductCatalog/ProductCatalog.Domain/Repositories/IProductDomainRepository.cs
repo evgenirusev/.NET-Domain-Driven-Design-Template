@@ -1,5 +1,5 @@
 public interface IProductDomainRepository : IDomainRepository<Product>
 {
-    Task<Product> Find(int id, CancellationToken cancellationToken = default);
-    Task Delete(int id, CancellationToken cancellationToken = default);
+    Task<Product> Find(Guid id, CancellationToken cancellationToken = default);
+    Task Delete(Guid id, CancellationToken cancellationToken = default);
 }

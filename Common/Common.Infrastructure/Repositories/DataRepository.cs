@@ -12,7 +12,7 @@ public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TE
 
     protected IQueryable<TEntity> AllAsNoTracking() => All().AsNoTracking();
 
-    public async Task<int> Save(
+    public async Task<Guid> Save(
         TEntity entity,
         CancellationToken cancellationToken = default)
     {

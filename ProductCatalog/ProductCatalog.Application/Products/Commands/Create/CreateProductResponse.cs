@@ -1,6 +1,6 @@
 public class CreateProductResponse
 {
-    internal CreateProductResponse(int id) => Id = id;
+    internal CreateProductResponse(Guid id) => Id = id;
 
-    public int Id { get; }
+    public Guid Id { get; }
 }

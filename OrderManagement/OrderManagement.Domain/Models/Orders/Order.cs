@@ -2,9 +2,8 @@ public class Order : Entity, IAggregateRoot
 {
     public HashSet<OrderItem> OrderItems { get; private set; }
 
-    public Order(int customerId, DateTime orderDate)
+    public Order(Guid customerId, DateTime orderDate)
     {
-        ValidateCustomerId(customerId);
         ValidateOrderDate(orderDate);
 
         CustomerId = customerId;
@@ -15,11 +14,11 @@ public class Order : Entity, IAggregateRoot
         RaiseEvent(new OrderAddedEvent());
     }
 
-    public int CustomerId { get; private set; }
+    public Guid CustomerId { get; private set; }
     public DateTime OrderDate { get; private set; }
     public OrderStatus Status { get; private set; }
 
-    public Order AddOrderItem(int productId, int quantity)
+    public Order AddOrderItem(Guid productId, int quantity)
     {
         ValidateOrderItemQuantity(quantity);
 
@@ -29,7 +28,7 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    public Order RemoveOrderItem(int orderItemId)
+    public Order RemoveOrderItem(Guid orderItemId)
     {
         var orderItem = OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
         if (orderItem != null)
@@ -45,9 +44,8 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    public Order UpdateCustomerId(int customerId)
+    public Order UpdateCustomerId(Guid customerId)
     {
-        ValidateCustomerId(customerId);
         CustomerId = customerId;
         return this;
     }
@@ -59,7 +57,7 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    public Order UpdateOrderItem(int orderItemId, int productId, int quantity)
+    public Order UpdateOrderItem(Guid orderItemId, Guid productId, int quantity)
     {
         ValidateOrderItemQuantity(quantity);
 
@@ -70,14 +68,6 @@ public class Order : Entity, IAggregateRoot
             orderItem.UpdateQuantity(quantity);
         }
         return this;
-    }
-
-    private void ValidateCustomerId(int customerId)
-    {
-        if (customerId < 1)
-        {
-            throw new ArgumentException("Invalid customer ID.");
-        }
     }
 
     private void ValidateOrderDate(DateTime orderDate)

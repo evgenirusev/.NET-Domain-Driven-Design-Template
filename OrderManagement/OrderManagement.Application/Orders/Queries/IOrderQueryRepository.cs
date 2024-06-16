@@ -1,4 +1,4 @@
 public interface IOrderQueryRepository : IQueryRepository<Order>
 {
-    Task<OrderResponse> GetDetailsById(int id, CancellationToken cancellationToken = default);
+    Task<OrderResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default);
 }

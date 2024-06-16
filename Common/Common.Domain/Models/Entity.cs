@@ -4,7 +4,7 @@
 
     protected Entity() => events = new List<IDomainEvent>();
 
-    public int Id { get; private set; } = default;
+    public Guid Id { get; private set; } = default;
 
     public IReadOnlyCollection<IDomainEvent> Events
         => events.ToList().AsReadOnly();

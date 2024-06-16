@@ -8,7 +8,6 @@ public class OrderModelConstants
 
     public class OrderItem
     {
-        public const int MinProductIdLength = 1;
         public const int MinQuantity = 1;
         public const int MaxQuantity = 1000;
     }

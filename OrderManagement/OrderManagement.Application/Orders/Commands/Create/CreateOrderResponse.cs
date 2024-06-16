@@ -1,9 +1,9 @@
 public class CreateOrderResponse
 {
-    public CreateOrderResponse(int orderId)
+    public CreateOrderResponse(Guid orderId)
     {
         OrderId = orderId;
     }
 
-    public int OrderId { get; }
+    public Guid OrderId { get; }
 }
