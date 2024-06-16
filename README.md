@@ -9,11 +9,26 @@ Key Features:
   <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
 </div>
 
-Migration script:
-dotnet ef migrations add InitialMigration --context "ProductDbContext" --project Products/Products.Infrastructure --startup-project Products/Products.Startup
+## Running the solution:
+- Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
+- Set a connection string for your database
 
-Key benefits to this template:
-1. Complete separation of bounded contexts via API and Event Sourcing while still being part of a single solution and a single database. Allows for very quick development and a very easy migration to microservices. Making bounded context violations is very difficult due to the separation of the contexts in different projects.
+## Core Philosophy
+Most DDD project templates fail to prevent unintentional coupling of bounded contexts. Those that do address this issue often separate bounded contexts into independent projects. While this approach avoids coupling, it introduces significant DevOps overhead, such as microservice orchestration, service discovery, and common NuGet package management. Our template resolves coupling issues by separating contexts into individual projects, but ensures they all run within a single binary, thus avoiding excessive DevOps complexity.
+
+### Domain Modeling and Development Process
+Begin by extensively communicating with your customers to gain a thorough understanding of the business domain and use cases. Use this insight to divide the domains or vertical slices in a way that allows them to operate independently. If you frequently find two domains being used together, consider merging them. Conversely, if you regularly use only specific use cases from one domain independently of others, consider splitting them into separate domains.
+
+### Data Storage
+You have two primary options for data storage:
+- (Recommended) Use a single database for all domains, with each domain having its own bounded context. This approach simplifies development and speeds up the process. Transitioning to microservices later will require only a migration script for the data.
+- Use a separate database for each domain. This simplifies the transition to microservices since you only need to split the domain into a separate repository. However, managing multiple databases from the beginning can slow down development somewhat.reduce development speed a bit.
+
+### Anti-corruption layers and validation
+Factories and Repositories serve as crucial anti-corruption layers, complementing fluent validations. Validation is implemented across all layers, with a particular emphasis on the domain layer. Ensuring the core domain is properly validated and bug-free is essential, as invalid state or bugs at this level will propagate to the rest of the layers.
+
+### Communication Between Bounded Contexts
+Contexts communicate through event sourcing or API calls.
 
 Things to document:
 1. internal proeperties in Domain. Only factories can instanciate domain objects.
