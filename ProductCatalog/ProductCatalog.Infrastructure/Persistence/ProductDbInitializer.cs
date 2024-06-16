@@ -1,9 +1,5 @@
 ﻿internal class ProductDbInitializer : DbInitializer
 {
-    public ProductDbInitializer(
-        ProductDbContext db,
-        IEnumerable<IInitialData> initialDataProviders)
-        : base(db, initialDataProviders)
-    {
-    }
+    public ProductDbInitializer(ProductDbContext db) 
+        : base(db, new List<IInitialData> { new ProductData() }) {}
 }
