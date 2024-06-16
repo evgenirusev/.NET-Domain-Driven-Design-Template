@@ -17,6 +17,8 @@ public class Product : Entity, IAggregateRoot
         Price = price;
 
         Suppliers = new HashSet<Supplier>();
+        
+        RaiseEvent(new ProductAddedEvent());
     }
     
     private Product(

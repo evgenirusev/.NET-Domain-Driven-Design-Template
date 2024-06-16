@@ -11,6 +11,8 @@ public class Order : Entity, IAggregateRoot
         OrderDate = orderDate;
         OrderItems = new HashSet<OrderItem>();
         Status = OrderStatus.Pending;
+        
+        RaiseEvent(new OrderAddedEvent());
     }
 
     public int CustomerId { get; private set; }
