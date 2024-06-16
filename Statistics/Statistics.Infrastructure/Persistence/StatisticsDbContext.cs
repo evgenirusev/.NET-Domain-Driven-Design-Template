@@ -6,7 +6,7 @@ internal class StatisticsDbContext(
     IEventDispatcher eventDispatcher)
     : BaseDBContext(options, eventDispatcher)
 {
-    public DbSet<Statistics> Statistics { get; set; }
+    public DbSet<TotalStatistics> TotalStatistics { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

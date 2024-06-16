@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-internal class StatisticsRepository : DataRepository<StatisticsDbContext, Statistics>,
+internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalStatistics>,
     IStatisticsDomainRepository,
     IStatisticsQueryRepository
 {
@@ -14,12 +14,12 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, Statis
     public async Task IncrementOrders(CancellationToken cancellationToken = default)
     {
         var statistics = await Data
-            .Statistics
+            .TotalStatistics
             .SingleOrDefaultAsync(cancellationToken);
 
         if (statistics == null)
         {
-            statistics = new Statistics();
+            statistics = new TotalStatistics();
             await Data.AddAsync(statistics);
         }
         
@@ -31,12 +31,12 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, Statis
     public async Task IncrementProducts(CancellationToken cancellationToken = default)
     {
         var statistics = await Data
-            .Statistics
+            .TotalStatistics
             .SingleOrDefaultAsync(cancellationToken);
 
         if (statistics == null)
         {
-            statistics = new Statistics();
+            statistics = new TotalStatistics();
             await Data.AddAsync(statistics);
         }
         

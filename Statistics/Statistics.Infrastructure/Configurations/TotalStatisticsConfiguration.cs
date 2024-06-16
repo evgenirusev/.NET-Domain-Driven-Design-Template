@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-internal class StatisticsConfiguration : IEntityTypeConfiguration<Statistics>
+internal class TotalStatisticsConfiguration : IEntityTypeConfiguration<TotalStatistics>
 {
-    public void Configure(EntityTypeBuilder<Statistics> builder)
+    public void Configure(EntityTypeBuilder<TotalStatistics> builder)
     {
         builder
             .HasKey(s => s.Id);

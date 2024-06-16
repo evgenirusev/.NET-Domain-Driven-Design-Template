@@ -12,6 +12,8 @@
       <ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
       <ProjectReference Include="..\ProductCatalog\ProductCatalog.Infrastructure\ProductCatalog.Infrastructure.csproj" />
       <ProjectReference Include="..\ProductCatalog\ProductCatalog.Web\ProductCatalog.Web.csproj" />
+      <ProjectReference Include="..\Statistics\Statistics.Infrastructure\Statistics.Infrastructure.csproj" />
+      <ProjectReference Include="..\Statistics\Statistics.Web\Statistics.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>

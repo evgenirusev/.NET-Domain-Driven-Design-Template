@@ -14,6 +14,13 @@ builder
     .AddOrderManagementInfrastructure(builder.Configuration)
     .AddOrderManagementWebComponents();
 
+builder
+    .Services
+    .AddStatisticsDomain()
+    .AddStatisticsApplication(builder.Configuration)
+    .AddStatisticsInfrastructure(builder.Configuration)
+    .AddStatisticsWebComponents();
+
 builder.Services
     .AddTokenAuthentication(builder.Configuration)
     .AddEventSourcing()

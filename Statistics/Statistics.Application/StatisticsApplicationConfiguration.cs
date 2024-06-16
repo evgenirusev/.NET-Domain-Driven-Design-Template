@@ -6,7 +6,7 @@ public static class StatisticsApplicationConfiguration
 {
     private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
 
-    public static IServiceCollection AddStatisticsCatalogApplication(
+    public static IServiceCollection AddStatisticsApplication(
         this IServiceCollection services,
         IConfiguration configuration)
         => services

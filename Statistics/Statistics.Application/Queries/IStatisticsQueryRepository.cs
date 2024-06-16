@@ -1,4 +1,3 @@
-﻿public interface IStatisticsQueryRepository : IQueryRepository<Statistics>
+﻿public interface IStatisticsQueryRepository : IQueryRepository<TotalStatistics>
 {
-        
 }
