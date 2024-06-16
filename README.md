@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./architecture-diagram-white.png" alt="Description of Image" style="width:80%;">
+  <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
 </div>
 
 # ASP.NET-Domain-Driven-Design-Template
