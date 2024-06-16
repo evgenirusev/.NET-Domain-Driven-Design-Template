@@ -1,4 +1,4 @@
-public class Statistics : IAggregateRoot
+public class Statistics : Entity, IAggregateRoot
 {
     public int TotalOrdersCreated { get; private set; }
     public int TotalProductsCreated { get; private set; }
