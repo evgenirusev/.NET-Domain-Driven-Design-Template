@@ -1,4 +1,4 @@
-![Alt text](relative%20./architecture-diagram.png?raw=true "Architecture diagram")
+![Alt text](./architecture-diagram.png?raw=true "Architecture diagram")
 
 # ASP.NET-Domain-Driven-Design-Template
 ASP.NET domain driven design template based on the Clean Architecture project structure.
