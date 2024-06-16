@@ -6,10 +6,10 @@ Key Features:
 - Streamlined Development: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
 
 <div align="center">
-  <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
+  <img src="./architecture-diagram.png" alt="Description of Image" style="width:90%;">
 </div>
 
-## Running the solution:
+### Running the solution:
 - Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 - Set a connection string for your database
 
