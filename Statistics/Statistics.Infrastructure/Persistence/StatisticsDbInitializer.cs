@@ -1,6 +1,6 @@
-﻿internal class ProductDbInitializer : DbInitializer
+﻿internal class StatisticsDbInitializer : DbInitializer
 {
-    public ProductDbInitializer(
+    public StatisticsDbInitializer(
         StatisticsDbContext db,
         IEnumerable<IInitialData> initialDataProviders)
         : base(db, initialDataProviders)
