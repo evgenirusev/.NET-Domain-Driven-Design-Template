@@ -1,6 +1,11 @@
 # .NET Domain Driven Design implemented with Clean Architecture and Vertical slices.
-The goal of this template is to provide a template for building highly decoupled monolithic .NET applications that can be easily extracted into microservices if the required by your business needs.
-Bounded Contexts separation - each bounded context is separated into its own separate project, hence highly reducing the probability of coupling between domains. To avoid having to deal with the overhead of managing multiple micro service deployments for each domain, the solution builds all of the contexts through the StartupProject, that way your development teams can gain the rapid development speed of using a monolith, while at the same time restricting the domains to be coupled with each other due to the domain separation by project.
+This template aims to facilitate the development of highly decoupled monolithic .NET applications, with the flexibility to transition to microservices if your business needs evolve.
+
+Key Features:
+- Bounded Contexts Separation: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
+- Streamlined Development: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
+
+This design ensures that development teams can benefit from the speed and simplicity of a monolithic architecture, with the added advantage of being able to decouple and scale into microservices when necessary.
 
 <div align="center">
   <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
