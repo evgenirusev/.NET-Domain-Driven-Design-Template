@@ -1,4 +1,6 @@
-![Alt text](./architecture-diagram-white.png?raw=true "Architecture diagram")
+<div align="center">
+  <img src="./architecture-diagram-white.png" alt="Description of Image">
+</div>
 
 # ASP.NET-Domain-Driven-Design-Template
 ASP.NET domain driven design template based on the Clean Architecture project structure.
