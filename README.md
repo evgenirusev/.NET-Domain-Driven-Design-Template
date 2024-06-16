@@ -5,8 +5,6 @@ Key Features:
 - Bounded Contexts Separation: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
 - Streamlined Development: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
 
-This design ensures that development teams can benefit from the speed and simplicity of a monolithic architecture, with the added advantage of being able to decouple and scale into microservices when necessary.
-
 <div align="center">
   <img src="./architecture-diagram.png" alt="Description of Image" style="width:80%;">
 </div>
