@@ -1,8 +1,8 @@
 ﻿using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 public class ValidationExceptionHandlerMiddleware
 {
@@ -67,13 +67,15 @@ public class ValidationExceptionHandlerMiddleware
     }
 
     private static string SerializeObject(object obj)
-        => JsonConvert.SerializeObject(obj, new JsonSerializerSettings
+    {
+        var options = new JsonSerializerOptions
         {
-            ContractResolver = new DefaultContractResolver
-            {
-                NamingStrategy = new CamelCaseNamingStrategy(true, true)
-            }
-        });
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
+        return JsonSerializer.Serialize(obj, options);
+    }
 }
 
 public static class ValidationExceptionHandlerMiddlewareExtensions
