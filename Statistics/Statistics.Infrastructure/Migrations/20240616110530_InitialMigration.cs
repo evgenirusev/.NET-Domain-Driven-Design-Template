@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Template.Infrastructure.Migrations
+namespace Statistics.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class ProductsUpdateIDGeneration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
