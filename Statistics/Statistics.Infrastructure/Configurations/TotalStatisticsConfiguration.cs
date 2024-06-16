@@ -7,5 +7,8 @@ internal class TotalStatisticsConfiguration : IEntityTypeConfiguration<TotalStat
     {
         builder
             .HasKey(s => s.Id);
+            
+        builder.Property(s => s.Id)
+            .ValueGeneratedOnAdd();
     }
 }

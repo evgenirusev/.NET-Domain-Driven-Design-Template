@@ -13,6 +13,7 @@ public static class ApplicationConfiguration
             .Configure<ApplicationSettings>(
                 configuration.GetSection(nameof(ApplicationSettings)),
                 options => options.BindNonPublicProperties = true)
+            .AddEventHandlers(assembly)
             .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly))
             .AddAutoMapperProfile(assembly)
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
@@ -24,4 +25,13 @@ public static class ApplicationConfiguration
                 (_, config) => config
                     .AddProfile(new MappingProfile(assembly)),
                 Array.Empty<Assembly>());
+    
+    private static IServiceCollection AddEventHandlers(this IServiceCollection services, Assembly assembly)
+        => services
+            .Scan(scan => scan
+                .FromAssemblies(assembly)
+                .AddClasses(classes => classes
+                    .AssignableTo(typeof(IEventHandler<>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
 }

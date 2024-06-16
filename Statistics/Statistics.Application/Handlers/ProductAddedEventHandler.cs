@@ -1,10 +1,10 @@
 ﻿public class ProductAddedEventHandler : IEventHandler<ProductAddedEvent>
 {
-    private readonly IStatisticsDomainRepository statistics;
+    private readonly IStatisticsDomainRepository statisticsRepository;
 
-    public ProductAddedEventHandler(IStatisticsDomainRepository statistics) 
-        => this.statistics = statistics;
+    public ProductAddedEventHandler(IStatisticsDomainRepository statisticsRepository) 
+        => this.statisticsRepository = statisticsRepository;
 
     public Task Handle(ProductAddedEvent domainEvent)
-        => statistics.IncrementProducts();
+        => statisticsRepository.IncrementProducts();
 }

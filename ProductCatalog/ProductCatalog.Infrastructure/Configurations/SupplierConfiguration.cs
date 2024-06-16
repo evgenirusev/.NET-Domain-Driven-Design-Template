@@ -8,6 +8,9 @@ internal class SupplierConfiguration : IEntityTypeConfiguration<Supplier>
         builder.ToTable("Suppliers");
 
         builder.HasKey(s => s.Id);
+        
+        builder.Property(s => s.Id)
+            .ValueGeneratedOnAdd();
 
         builder.Property(s => s.Name)
             .IsRequired()

@@ -24,7 +24,7 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalS
         }
         
         statistics.IncrementTotalOrders();
-
+        
         await Save(statistics, cancellationToken);
     }
 
@@ -41,7 +41,7 @@ internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalS
         }
         
         statistics.IncrementTotalProducts();
-
+        
         await Save(statistics, cancellationToken);
     }
 }
