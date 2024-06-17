@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
+using OrderManagement.Application.Services;
 
-public sealed class ProductCatalogHttpService
+public sealed class ProductCatalogHttpService : IProductCatalogHttpService
 {
     private readonly HttpClient client;
 
@@ -13,7 +14,6 @@ public sealed class ProductCatalogHttpService
     public async Task<int> GetProductById(string id)
     {
         var content = await client.GetFromJsonAsync<int>($"products/{id}");
-
         return content;
     }
 }

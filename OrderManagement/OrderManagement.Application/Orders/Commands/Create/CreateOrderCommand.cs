@@ -1,4 +1,5 @@
 using MediatR;
+using OrderManagement.Application.Services;
 
 public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
 {
@@ -6,10 +7,12 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
     {
         private readonly IOrderDomainRepository orderRepository;
         private readonly IOrderFactory orderFactory;
+        private readonly IProductCatalogHttpService productCatalogHttpService;
 
         public CreateOrderCommandHandler(
             IOrderDomainRepository orderRepository,
-            IOrderFactory orderFactory)
+            IOrderFactory orderFactory,
+            IProductCatalogHttpService productCatalogHttpService)
         {
             this.orderRepository = orderRepository;
             this.orderFactory = orderFactory;
@@ -19,7 +22,7 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
             CreateOrderCommand request,
             CancellationToken cancellationToken)
         {
-            // TODO: validate CustomerId with an API call
+            productCatalogHttpService.GetProductById("");
 
             var order = orderFactory
                 .WithOrderDate(request.OrderDate)
