@@ -11,5 +11,17 @@ public static class InfrastructureConfiguration
             .AddDBStorage<OrderManagementDbContext>(
                 configuration,
                 Assembly.GetExecutingAssembly())
-            .AddTransient<IDbInitializer, OrderManagementDbInitializer>();
+            .AddTransient<IDbInitializer, OrderManagementDbInitializer>()
+            .AddHttpClients(configuration);
+
+    public static IServiceCollection AddHttpClients(
+        this IServiceCollection services,
+        IConfiguration configuration)
+        => services.AddHttpClient<ProductCatalogHttpService>((serviceProvider, httpClient) =>
+            {
+                var httpClientSettings = configuration.GetOrderManagementSettings();
+                httpClient.BaseAddress = new Uri(httpClientSettings.ProductCatalogAPIClientSettings.BaseUrl);
+            })
+            .ConfigureDefaultHttpClientHandler()
+            .Services;
 }

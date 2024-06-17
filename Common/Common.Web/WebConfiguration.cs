@@ -9,8 +9,8 @@ public static class WebConfiguration
         Type applicationConfigurationType)
     {
         services
-            .AddFluentValidationAutoValidation()
             .AddValidatorsFromAssemblyContaining(applicationConfigurationType)
+            .AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters();
 
         return services;

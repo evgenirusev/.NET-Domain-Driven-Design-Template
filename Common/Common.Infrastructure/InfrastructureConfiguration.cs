@@ -16,7 +16,7 @@ public static class InfrastructureConfiguration
         => services
             .AddDatabase<TDbContext>(configuration)
             .AddRepositories(assembly);
-    
+
     public static IServiceCollection AddTokenAuthentication(
         this IServiceCollection services,
         IConfiguration configuration)
@@ -50,9 +50,17 @@ public static class InfrastructureConfiguration
 
         return services;
     }
-    
+
     public static IServiceCollection AddEventSourcing(this IServiceCollection services)
         => services.AddTransient<IEventDispatcher, EventDispatcher>();
+
+    public static IHttpClientBuilder ConfigureDefaultHttpClientHandler(this IHttpClientBuilder builder)
+        => builder
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            {
+                PooledConnectionLifetime = TimeSpan.FromMinutes(5)
+            })
+            .SetHandlerLifetime(Timeout.InfiniteTimeSpan);
 
     private static IServiceCollection AddDatabase<TDbContext>(
         this IServiceCollection services,

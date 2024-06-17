@@ -28,7 +28,8 @@ builder.Services
     .AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new() { Title = "Web API", Version = "v1" });
-    });
+    })
+    .AddHttpClient();
 
 var app = builder.Build();
 
