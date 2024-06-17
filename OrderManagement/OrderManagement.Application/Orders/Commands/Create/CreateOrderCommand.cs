@@ -21,8 +21,6 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
             CreateOrderCommand request,
             CancellationToken cancellationToken)
         {
-            productCatalogHttpService.GetProductById("");
-
             var order = orderFactory
                 .WithOrderDate(request.OrderDate)
                 .WithCustomerId(request.CustomerId)
