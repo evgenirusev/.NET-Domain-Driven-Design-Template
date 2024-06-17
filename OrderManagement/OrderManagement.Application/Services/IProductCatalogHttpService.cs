@@ -1,6 +1,4 @@
-namespace OrderManagement.Application.Services;
-
 public interface IProductCatalogHttpService
 {
-    public Task<int> GetProductById(string id);
+    public Task<ProductResponse?> GetProductById(string id);
 }

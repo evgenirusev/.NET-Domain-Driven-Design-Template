@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-using OrderManagement.Application.Services;
 
 public sealed class ProductCatalogHttpService : IProductCatalogHttpService
 {
@@ -10,10 +9,6 @@ public sealed class ProductCatalogHttpService : IProductCatalogHttpService
         this.client = client;
     }
 
-    // TODO: use application level response
-    public async Task<int> GetProductById(string id)
-    {
-        var content = await client.GetFromJsonAsync<int>($"products/{id}");
-        return content;
-    }
+    public async Task<ProductResponse?> GetProductById(string id)
+        => await client.GetFromJsonAsync<ProductResponse>($"products/{id}");
 }
