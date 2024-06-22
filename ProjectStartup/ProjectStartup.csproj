@@ -8,6 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+      <ProjectReference Include="..\Identity\Identity.Web\Identity.Web.csproj" />
       <ProjectReference Include="..\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
       <ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
       <ProjectReference Include="..\ProductCatalog\ProductCatalog.Infrastructure\ProductCatalog.Infrastructure.csproj" />

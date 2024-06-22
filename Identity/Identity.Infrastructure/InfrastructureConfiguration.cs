@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddInfrastructure(
+    public static IServiceCollection AddIdentityInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
         => services

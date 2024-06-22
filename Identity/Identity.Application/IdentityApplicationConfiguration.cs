@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class IdentityApplicationConfiguration
 {
-    public static IServiceCollection AddApplication(
+    public static IServiceCollection AddIdentityApplication(
         this IServiceCollection services,
         IConfiguration configuration)
         => services
