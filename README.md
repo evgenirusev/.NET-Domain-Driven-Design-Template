@@ -1,13 +1,13 @@
 # .NET Domain Driven Design implemented with Clean Architecture and Vertical slices.
 This template aims to facilitate the development of highly decoupled monolithic .NET applications, with the flexibility to transition to microservices if your business needs evolve.
 
-**Key Features**:
-- **Bounded Contexts Separation**: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
-- **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
-
 <div align="center">
   <img src="./diagram.png" alt="Description of Image" style="width:90%;">
 </div>
+
+**Key Features**:
+- **Bounded Contexts Separation**: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
+- **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
 
 ### Running the solution:
 - Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
