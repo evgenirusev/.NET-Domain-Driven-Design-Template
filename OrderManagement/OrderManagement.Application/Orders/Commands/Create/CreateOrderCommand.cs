@@ -10,8 +10,7 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
 
         public CreateOrderCommandHandler(
             IOrderDomainRepository orderRepository,
-            IOrderFactory orderFactory,
-            IProductCatalogHttpService productCatalogHttpService)
+            IOrderFactory orderFactory)
         {
             this.orderRepository = orderRepository;
             this.orderFactory = orderFactory;
