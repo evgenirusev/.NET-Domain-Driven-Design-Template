@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-internal class IdentityDbContext : BaseDbContext<IdentityDbContext>
+internal class IdentityDbContext : IdentityDbContext<User>
 {
-    public IdentityDbContext(
-        DbContextOptions<IdentityDbContext> options,
-        IEventDispatcher eventDispatcher)
-        : base(options, eventDispatcher)
+    public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+        : base(options)
     {
     }
 
