@@ -11,7 +11,8 @@ public static class WebConfiguration
         services
             .AddValidatorsFromAssemblyContaining(applicationConfigurationType)
             .AddFluentValidationAutoValidation()
-            .AddFluentValidationClientsideAdapters();
+            .AddFluentValidationClientsideAdapters()
+            .AddScoped<ICurrentUser, CurrentUserService>();
 
         return services;
     }
