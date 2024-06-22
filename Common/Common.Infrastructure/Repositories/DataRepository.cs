@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TEntity>
-    where TDbContext : BaseDBContext
+    where TDbContext : DbContext
     where TEntity : Entity, IAggregateRoot
 {
     protected DataRepository(TDbContext db) => Data = db;
@@ -17,7 +17,6 @@ public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TE
         CancellationToken cancellationToken = default)
     {
         Data.Update(entity);
-
         await Data.SaveChangesAsync(cancellationToken);
     }
 }

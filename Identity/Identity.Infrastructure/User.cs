@@ -2,7 +2,7 @@
 
 public class User : IdentityUser, IUser
 {
-    internal User(string email)
+    public User(string email)
         : base(email)
         => Email = email;
 }

@@ -1,11 +1,15 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
-internal class OrderManagementDbContext(
-    DbContextOptions<OrderManagementDbContext> options,
-    IEventDispatcher eventDispatcher)
-    : BaseDBContext(options, eventDispatcher)
+internal class OrderManagementDbContext : BaseDbContext<OrderManagementDbContext>
 {
+    public OrderManagementDbContext(
+        DbContextOptions<OrderManagementDbContext> options,
+        IEventDispatcher eventDispatcher)
+        : base(options, eventDispatcher)
+    {
+    }
+
     public DbSet<Order> Orders { get; set; } = default!;
     public DbSet<OrderItem> OrderItems { get; set; } = default!;
     

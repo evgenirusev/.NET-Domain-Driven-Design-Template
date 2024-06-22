@@ -1,12 +1,16 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
-internal class StatisticsDbContext(
-    DbContextOptions<StatisticsDbContext> options,
-    IEventDispatcher eventDispatcher)
-    : BaseDBContext(options, eventDispatcher)
+internal class StatisticsDbContext : BaseDbContext<StatisticsDbContext>
 {
-    public DbSet<TotalStatistics> TotalStatistics { get; set; }
+    public StatisticsDbContext(
+        DbContextOptions<StatisticsDbContext> options,
+        IEventDispatcher eventDispatcher)
+        : base(options, eventDispatcher)
+    {
+    }
+
+    public DbSet<TotalStatistics> TotalStatistics { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

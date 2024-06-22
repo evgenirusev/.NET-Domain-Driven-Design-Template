@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 
-public abstract class BaseDBContext : DbContext
+public abstract class BaseDbContext<TContext> : DbContext where TContext : DbContext
 {
     private readonly IEventDispatcher _eventDispatcher;
     private readonly Stack<object> _savesChangesTracker;
 
-    protected BaseDBContext(DbContextOptions options, IEventDispatcher eventDispatcher)
+    protected BaseDbContext(DbContextOptions<TContext> options, IEventDispatcher eventDispatcher)
         : base(options)
     {
         _eventDispatcher = eventDispatcher;
