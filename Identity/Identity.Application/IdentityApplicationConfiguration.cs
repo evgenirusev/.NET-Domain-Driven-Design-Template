@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-public static class ApplicationConfiguration
+public static class IdentityApplicationConfiguration
 {
     public static IServiceCollection AddApplication(
         this IServiceCollection services,
