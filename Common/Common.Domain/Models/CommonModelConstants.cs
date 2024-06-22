@@ -1,6 +1,13 @@
 public class CommonModelConstants
 {
-    public const int Zero = 0;
+    public class Common
+    {
+        public const int Zero = 0;
+        public const int MinNameLength = 3;
+        public const int MaxNameLength = 50;
+        public const int MaxUrlLength = 2048;
+        public const string AdministratorRoleName = "Administrator";
+    }
     
     public class Identity
     {
