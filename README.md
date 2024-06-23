@@ -45,3 +45,6 @@ Bounded contexts communicate either through event sourcing or API calls. If you 
 - [Scrutor](https://github.com/khellang/Scrutor)
 - [xUnit](https://github.com/xunit/xunit)
 - [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
+
+## For more details on the template, feel free to read my article on Medium
+https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509
