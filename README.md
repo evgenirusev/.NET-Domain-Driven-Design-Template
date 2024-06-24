@@ -40,6 +40,7 @@ Bounded contexts communicate either through event sourcing or API calls. If you 
   - How does mapping work with IMapFrom
   - How Domain Events work
 - Program.cs - can abstract away each .Add{layer} into their own context, such that you can simplify the Bounded Context service registrations to just builder.Services.AddOrderManagement();
+- ! Provide a disclamer point on overengineering and how to simplify development in order to reduce development friction for your teams.
 - Improve on the DbInitializers to work with automatically registered .Data.cs files in the Domain.
 - Add a unit tests and mocking examples
 - Improve on the identity framework
