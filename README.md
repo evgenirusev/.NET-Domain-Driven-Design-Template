@@ -34,6 +34,18 @@ You have two primary options for data storage:
 ### Communication Between Bounded Contexts
 Bounded contexts communicate either through event sourcing or API calls. If you encounter a use case that spans across two bounded contexts and doesn't fit into an existing one, consider creating a new Aggregator bounded context to handle it effectively.
 
+## Template updates roadmap
+- Generation script for Bounded Contexts to reduce friction to development
+- Improve documentation
+  - How does mapping work with IMapFrom
+  - How Domain Events work
+- Program.cs - can abstract away each .Add{layer} into their own context, such that you can simplify the Bounded Context service registrations to just builder.Services.AddOrderManagement();
+- ! Provide a disclamer point on overengineering and how to simplify development in order to reduce development friction for your teams.
+- Improve on the DbInitializers to work with automatically registered .Data.cs files in the Domain.
+- Add a unit tests and mocking examples
+- Improve on the identity framework
+- Create a streamlined clear flow for how to register and use API clients
+
 ## :construction_worker: Built with
 
 - [.NET Core 8](https://github.com/dotnet/core) 
@@ -45,3 +57,6 @@ Bounded contexts communicate either through event sourcing or API calls. If you 
 - [Scrutor](https://github.com/khellang/Scrutor)
 - [xUnit](https://github.com/xunit/xunit)
 - [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
+
+## For more details on the template, feel free to read my article on Medium
+https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509
