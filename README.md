@@ -9,7 +9,7 @@ This template aims to facilitate the development of highly decoupled monolithic 
 - **Bounded Contexts Separation**: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
 - **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
 
-### Running the solution:
+## Running the solution:
 - Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 - Set a connection string for your database
 
@@ -40,8 +40,56 @@ To create your own database initializers, follow these steps:
 - Override Initialize Method (if needed): If custom initialization behavior is required, override the Initialize method in your DB initializer class. This is similar to how it's done for the IdentityDbInitializer.
 By following these steps, you can customize the seeding process to meet your specific requirements.
 
-### Communication Between Bounded Contexts
-Bounded contexts communicate either through event sourcing or API calls. If you encounter a use case that spans across two bounded contexts and doesn't fit into an existing one, consider creating a new Aggregator bounded context to handle it effectively.
+## Communication Between Bounded Contexts
+Bounded contexts communicate either through Event Sourcing or API calls.
+
+For instance, if you need to keep track of statistics such as the number of orders placed in a day, a solution could involve triggering an ‘OrderCreated’ Domain Event within the OrderManagement domain, which would then be captured and processed by the Statistics Domain.
+
+### How to use Domain Events:
+All entities extend the Entity class, which contains the interface for raising events.
+```
+public abstract class Entity : IEntity
+{
+    private readonly ICollection<IDomainEvent> events;
+
+    protected Entity() => events = new List<IDomainEvent>();
+
+    public IReadOnlyCollection<IDomainEvent> Events
+        => events.ToList().AsReadOnly();
+
+    public void ClearEvents() => events.Clear();
+
+    protected void RaiseEvent(IDomainEvent domainEvent)
+        => events.Add(domainEvent);
+
+    ...
+```
+How to Raise an event:
+```
+public class Order : Entity, IAggregateRoot
+{
+    public Order(Guid customerId, DateTime orderDate)
+    {
+        ...
+
+        RaiseEvent(new OrderAddedEvent());
+    }
+```
+
+Example Event Handler:
+```
+public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
+{
+    private readonly IStatisticsDomainRepository statistics;
+
+    public OrderAddedEventHandler(IStatisticsDomainRepository statistics)
+        => this.statistics = statistics;
+
+    public Task Handle(OrderAddedEvent domainEvent)
+        => statistics.IncrementProducts();
+}
+```
+All event handlers are extending the IEventHandler interface, which get automatically registered into DI via the assembly scanner in .NET.
 
 ## Template updates roadmap
 - Generation script for Bounded Contexts to reduce friction to development
