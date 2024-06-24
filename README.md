@@ -5,15 +5,15 @@ This template aims to facilitate the development of highly decoupled monolithic 
   <img src="./diagram.png" alt="Description of Image" style="width:90%;">
 </div>
 
-**Key Features**:
+## Key Features
 - **Bounded Contexts Separation**: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
-- **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This enables rapid development akin to a monolith while maintaining strict separation between domains.
+- **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This allows for frictionless development without overhead while maintaining strict separation between domains.
 
 ## Running the solution:
 - Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 - Set a connection string for your database
 
-## :bulb: Core Philosophy
+## :bulb: Core Principles
 Many DDD projects struggle to strictly prevent unintentional coupling between bounded contexts. This issue often arises because the domains are part of the same project, and developers have the freedom to use dependencies that don't belong to a specific bounded context. Those that do address this issue often separate bounded contexts into independent projects. While this approach avoids coupling, it introduces significant DevOps overhead, such as microservice orchestration, service discovery, and common NuGet package management. This template resolves coupling issues by separating contexts into individual projects, but ensures they all run within a single binary, thus avoiding excessive DevOps complexity.
 
 ### Domain Modeling and Development Process
@@ -92,13 +92,10 @@ public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
 All event handlers are extending the **IEventHandler** interface, which get automatically registered into DI via the assembly scanner in .NET.
 
 ## Template updates roadmap
-- Generation script for Bounded Contexts to reduce friction to development
 - Improve documentation
   - How does mapping work with IMapFrom
-  - How Domain Events work
 - Program.cs - can abstract away each .Add{layer} into their own context, such that you can simplify the Bounded Context service registrations to just builder.Services.AddOrderManagement();
 - ! Provide a disclamer point on overengineering and how to simplify development in order to reduce development friction for your teams.
-- Improve on the DbInitializers to work with automatically registered .Data.cs files in the Domain.
 - Add a unit tests and mocking examples
 - Improve on the identity framework
 - Create a streamlined clear flow for how to register and use API clients
