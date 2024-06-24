@@ -46,7 +46,7 @@ Bounded contexts communicate either through Event Sourcing or API calls.
 For instance, if you need to keep track of statistics such as the number of orders placed in a day, a solution could involve triggering an ‘OrderCreated’ Domain Event within the OrderManagement domain, which would then be captured and processed by the Statistics Domain.
 
 ### How to use Domain Events:
-All entities extend the Entity class, which contains the interface for raising events.
+All entities extend the **Entity** class, which contains the interface for raising events.
 ```
 public abstract class Entity : IEntity
 {
@@ -76,7 +76,7 @@ public class Order : Entity, IAggregateRoot
     }
 ```
 
-Example Event Handler:
+Example **Event Handler**:
 ```
 public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
 {
@@ -89,7 +89,7 @@ public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
         => statistics.IncrementProducts();
 }
 ```
-All event handlers are extending the IEventHandler interface, which get automatically registered into DI via the assembly scanner in .NET.
+All event handlers are extending the **IEventHandler** interface, which get automatically registered into DI via the assembly scanner in .NET.
 
 ## Template updates roadmap
 - Generation script for Bounded Contexts to reduce friction to development
