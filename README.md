@@ -26,10 +26,19 @@ Consider organizing your repositories into Query and Domain repositories: Query 
 ### Anti-corruption layers and validation
 Factories and Repositories serve as crucial anti-corruption layers, complementing fluent validations. Domain objects are internal and must only be created through Factories. Validation is implemented across all layers, with a particular emphasis on the domain layer. Ensuring the core domain is properly validated and bug-free is essential, as invalid state or bugs at this level will propagate to the rest of the layers.
 
-### Data Storage
+## Database Storage
+### One or multiple Databases
 You have two primary options for data storage:
 - (Recommended) Use a single database for all domains, with each domain having its own bounded context. This approach simplifies development and speeds up the process. Transitioning to microservices later will require only a migration script for the data.
 - Use a separate database for each domain. This simplifies the transition to microservices since you only need to split the domain into a separate repository. However, managing multiple databases from the beginning can slow down development somewhat.
+
+### DB initialization and Seeding
+To create your own database initializers, follow these steps:
+- Extend DbInitializer: Create a new class that inherits from the DbInitializer class.
+- Define Entities: Define the entities you want to seed into the database.
+- Pass Entities to Constructor: Pass these entities to the constructor of your new DB initializer class.
+- Override Initialize Method (if needed): If custom initialization behavior is required, override the Initialize method in your DB initializer class. This is similar to how it's done for the IdentityDbInitializer.
+By following these steps, you can customize the seeding process to meet your specific requirements.
 
 ### Communication Between Bounded Contexts
 Bounded contexts communicate either through event sourcing or API calls. If you encounter a use case that spans across two bounded contexts and doesn't fit into an existing one, consider creating a new Aggregator bounded context to handle it effectively.
