@@ -34,6 +34,17 @@ You have two primary options for data storage:
 ### Communication Between Bounded Contexts
 Bounded contexts communicate either through event sourcing or API calls. If you encounter a use case that spans across two bounded contexts and doesn't fit into an existing one, consider creating a new Aggregator bounded context to handle it effectively.
 
+## Template updates roadmap
+- Generation script for Bounded Contexts to reduce friction to development
+- Improve documentation
+  - How does mapping work with IMapFrom
+  - How Domain Events work
+- Program.cs - can abstract away each .Add{layer} into their own context, such that you can simplify the Bounded Context service registrations to just builder.Services.AddOrderManagement();
+- Improve on the DbInitializers to work with automatically registered .Data.cs files in the Domain.
+- Add a unit tests and mocking examples
+- Improve on the identity framework
+- Create a streamlined clear flow for how to register and use API clients
+
 ## :construction_worker: Built with
 
 - [.NET Core 8](https://github.com/dotnet/core) 
