@@ -10,8 +10,8 @@ This template aims to facilitate the development of highly decoupled monolithic 
 - **Streamlined Development**: By consolidating all contexts into the StartupProject, the solution avoids the complexity of managing multiple microservice deployments. This allows for frictionless development without overhead while maintaining strict separation between domains.
 
 ## Running the solution:
-- Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 - Set a connection string for your database
+- Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 
 ## :bulb: Core Principles
 Many DDD projects struggle to strictly prevent unintentional coupling between bounded contexts. This issue often arises because the domains are part of the same project, and developers have the freedom to use dependencies that don't belong to a specific bounded context. Those that do address this issue often separate bounded contexts into independent projects. While this approach avoids coupling, it introduces significant DevOps overhead, such as microservice orchestration, service discovery, and common NuGet package management. This template resolves coupling issues by separating contexts into individual projects, but ensures they all run within a single binary, thus avoiding excessive DevOps complexity.
