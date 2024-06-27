@@ -94,15 +94,6 @@ public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
 ```
 All event handlers are extending the **IEventHandler** interface, which get automatically registered into DI via the assembly scanner in .NET.
 
-## Template updates roadmap
-- Improve documentation
-  - How does mapping work with IMapFrom
-- Program.cs - can abstract away each .Add{layer} into their own context, such that you can simplify the Bounded Context service registrations to just builder.Services.AddOrderManagement();
-- ! Provide a disclamer point on overengineering and how to simplify development in order to reduce development friction for your teams.
-- Add a unit tests and mocking examples
-- Improve on the identity framework
-- Create a streamlined clear flow for how to register and use API clients
-
 ## :construction_worker: Built with
 
 - [.NET Core 8](https://github.com/dotnet/core) 
