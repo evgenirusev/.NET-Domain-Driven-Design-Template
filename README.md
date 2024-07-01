@@ -83,6 +83,7 @@ public abstract class Entity : IEntity
         => events.Add(domainEvent);
 
     ...
+}
 ```
 
 How to Raise an event:
@@ -96,6 +97,7 @@ public class Order : Entity, IAggregateRoot
 
         RaiseEvent(new OrderAddedEvent());
     }
+}
 ```
 
 Example **Event Handler**:
