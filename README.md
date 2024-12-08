@@ -6,6 +6,9 @@ This template aims to facilitate the development of highly decoupled monolithic 
   <img src="./diagram.png" alt="Description of Image" style="width:90%;">
 </div>
 
+## For a more comprehensive overview of the template, feel free to refer the article on Medium:
+[https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509](https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509)
+
 ## Key Features
 
 * **Bounded Contexts Separation**: Each bounded context is isolated in its own project, significantly minimizing the risk of domain coupling. This approach allows for independent domain development within a monolithic structure.
@@ -128,6 +131,3 @@ All event handlers are extending the **IEventHandler** interface, which get auto
 * [Scrutor](https://github.com/khellang/Scrutor)
 * [xUnit](https://github.com/xunit/xunit)
 * [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
-
-## For more details on the template, feel free to read my article on Medium
-[https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509](https://medium.com/@evgeni.n.rusev/net-domain-driven-design-template-with-a-vertical-slice-architecture-33812c22b509)
