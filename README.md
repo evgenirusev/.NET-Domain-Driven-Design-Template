@@ -1,5 +1,7 @@
 # .NET Domain Driven Design implemented with Clean Architecture and Vertical slices
 
+[![build](https://github.com/evgenirusev/.NET-Domain-Driven-Design-Template/actions/workflows/build.yml/badge.svg)](https://github.com/evgenirusev/.NET-Domain-Driven-Design-Template/actions/workflows/build.yml)
+
 This template aims to facilitate the development of highly decoupled monolithic .NET applications, with the flexibility to transition to microservices if your business needs evolve.
 
 <div align="center">
