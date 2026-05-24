@@ -9,7 +9,7 @@ internal class IdentityDbContext : IdentityDbContext<User>
     {
     }
 
-    public DbSet<User> Users { get; set; } = default!;
+    public new DbSet<User> Users { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -122,9 +122,9 @@ All event handlers are extending the **IEventHandler** interface, which get auto
 
 ## :construction_worker: Built with
 
-* [.NET Core 8](https://github.com/dotnet/core)
-* [ASP.NET Core 8](https://github.com/dotnet/aspnetcore)
-* [Entity Framework Core 8](https://github.com/dotnet/efcore)
+* [.NET 10](https://github.com/dotnet/core)
+* [ASP.NET Core 10](https://github.com/dotnet/aspnetcore)
+* [Entity Framework Core 10](https://github.com/dotnet/efcore)
 * [MediatR](https://github.com/jbogard/MediatR)
 * [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 * [AutoMapper](https://github.com/AutoMapper/AutoMapper)
