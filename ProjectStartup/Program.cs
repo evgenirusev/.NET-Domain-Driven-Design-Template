@@ -31,6 +31,7 @@ builder.Services
     .AddTokenAuthentication(builder.Configuration)
     .AddEventSourcing()
     .AddModelBinders()
+    .AddExceptionHandling()
     .AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new() { Title = "Web API", Version = "v1" });

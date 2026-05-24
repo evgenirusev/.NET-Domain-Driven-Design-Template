@@ -3,18 +3,21 @@ using Microsoft.EntityFrameworkCore;
 public abstract class BaseDbContext<TContext> : DbContext where TContext : DbContext
 {
     private readonly IEventDispatcher _eventDispatcher;
-    private readonly Stack<object> _savesChangesTracker;
+    private bool _isDispatching;
 
     protected BaseDbContext(DbContextOptions<TContext> options, IEventDispatcher eventDispatcher)
         : base(options)
     {
         _eventDispatcher = eventDispatcher;
-        _savesChangesTracker = new Stack<object>();
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        _savesChangesTracker.Push(new object());
+        // Reentrant save from within an event handler: persist without re-dispatching to avoid loops.
+        if (_isDispatching)
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
 
         var entitiesWithEvents = ChangeTracker
             .Entries<IEntity>()
@@ -22,24 +25,27 @@ public abstract class BaseDbContext<TContext> : DbContext where TContext : DbCon
             .Select(e => e.Entity)
             .ToArray();
 
-        foreach (var entity in entitiesWithEvents)
-        {
-            var events = entity.Events.ToArray();
-            entity.ClearEvents();
+        var result = await base.SaveChangesAsync(cancellationToken);
 
-            foreach (var domainEvent in events)
+        _isDispatching = true;
+        try
+        {
+            foreach (var entity in entitiesWithEvents)
             {
-                await _eventDispatcher.Dispatch(domainEvent);
+                var events = entity.Events.ToArray();
+                entity.ClearEvents();
+
+                foreach (var domainEvent in events)
+                {
+                    await _eventDispatcher.Dispatch(domainEvent);
+                }
             }
         }
-
-        _savesChangesTracker.Pop();
-
-        if (!_savesChangesTracker.Any())
+        finally
         {
-            return await base.SaveChangesAsync(cancellationToken);
+            _isDispatching = false;
         }
 
-        return 0;
+        return result;
     }
 }

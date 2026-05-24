@@ -19,7 +19,7 @@ This template aims to facilitate the development of highly decoupled monolithic 
 
 ## Running the solution
 
-* Set a connection string for your database
+* Configure secrets. Copy `ProjectStartup/appsettings.Development.example.json` to `ProjectStartup/appsettings.Development.json` (gitignored) and fill in `ApplicationSettings:Secret` and `ConnectionStrings:DefaultConnection`. Alternatively use `dotnet user-secrets set "ApplicationSettings:Secret" "<value>" --project ProjectStartup`.
 
 * Migrations - execute the bash script to create the project migrations - ./run_migrations.sh
 

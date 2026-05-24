@@ -41,3 +41,10 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+# Local secrets / overrides
+appsettings.Development.json
+appsettings.*.local.json
+
+# Claude Code local state
+.claude/

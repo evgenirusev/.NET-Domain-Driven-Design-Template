@@ -5,7 +5,7 @@
         IWebHostEnvironment env)
         => app
             .UseExceptionHandling(env)
-            .UseValidationExceptionHandler()
+            .UseExceptionHandler()
             .UseHttpsRedirection()
             .UseRouting()
             .UseCors(options => options

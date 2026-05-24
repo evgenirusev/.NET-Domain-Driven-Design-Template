@@ -1,0 +1,28 @@
+<Project>
+
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageVersion Include="AutoMapper" Version="16.1.1" />
+        <PackageVersion Include="FluentAssertions" Version="7.2.2" />
+        <PackageVersion Include="FluentValidation" Version="11.12.0" />
+        <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
+        <PackageVersion Include="MediatR" Version="14.1.0" />
+        <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.8" />
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
+        <PackageVersion Include="Scrutor" Version="7.0.0" />
+        <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.12" />
+        <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+        <PackageVersion Include="xunit" Version="2.9.3" />
+        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+    </ItemGroup>
+
+</Project>

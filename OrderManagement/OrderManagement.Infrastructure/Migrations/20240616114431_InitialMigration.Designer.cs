@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Orders.Infrastructure.Migrations
+namespace OrderManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
     [Migration("20240616114431_InitialMigration")]

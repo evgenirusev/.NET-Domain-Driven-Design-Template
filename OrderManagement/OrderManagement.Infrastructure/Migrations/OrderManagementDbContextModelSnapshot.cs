@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Orders.Infrastructure.Migrations
+namespace OrderManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
     partial class OrderManagementDbContextModelSnapshot : ModelSnapshot

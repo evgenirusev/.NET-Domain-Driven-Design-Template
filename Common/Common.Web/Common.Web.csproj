@@ -10,9 +10,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="14.1.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
-        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="FluentValidation.AspNetCore" />
     </ItemGroup>
 
     <ItemGroup>

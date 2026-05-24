@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Products.Infrastructure.Migrations
+namespace ProductCatalog.Infrastructure.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
     [Migration("20240616114441_InitialMigration")]

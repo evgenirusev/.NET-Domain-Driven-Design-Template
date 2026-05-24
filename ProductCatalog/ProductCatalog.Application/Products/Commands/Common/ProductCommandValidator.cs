@@ -17,7 +17,7 @@ public class ProductCommandValidator : AbstractValidator<ProductCommand>
         RuleFor(b => b.Price.Amount)
             .NotEmpty().WithMessage("Price amount is required.")
             .GreaterThan(CommonModelConstants.Common.Zero).WithMessage("Price amount must be greater than zero.")
-            .ScalePrecision(2, ProductModelConstants.Price.MaxAmountDigits)
+            .PrecisionScale(ProductModelConstants.Price.MaxAmountDigits, 2, ignoreTrailingZeros: false)
             .WithMessage($"Price amount must have at most {ProductModelConstants.Price.MaxAmountDigits} digits.");
 
         RuleFor(b => b.Price.Currency)
@@ -28,7 +28,7 @@ public class ProductCommandValidator : AbstractValidator<ProductCommand>
         RuleFor(b => b.Weight.Value)
             .NotEmpty().WithMessage("Weight value is required.")
             .GreaterThan(CommonModelConstants.Common.Zero).WithMessage("Weight value must be greater than zero.")
-            .ScalePrecision(2, ProductModelConstants.Weight.MaxValueDigits)
+            .PrecisionScale(ProductModelConstants.Weight.MaxValueDigits, 2, ignoreTrailingZeros: false)
             .WithMessage($"Weight value must have at most {ProductModelConstants.Weight.MaxValueDigits} digits.");
 
         RuleFor(b => b.Weight.Unit)

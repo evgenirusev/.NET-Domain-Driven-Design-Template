@@ -31,4 +31,12 @@ public static class WebConfiguration
 
         return services;
     }
+
+    public static IServiceCollection AddExceptionHandling(
+        this IServiceCollection services)
+        => services
+            .AddProblemDetails()
+            .AddExceptionHandler<ValidationExceptionHandler>()
+            .AddExceptionHandler<NotFoundExceptionHandler>()
+            .AddExceptionHandler<DomainExceptionHandler>();
 }
