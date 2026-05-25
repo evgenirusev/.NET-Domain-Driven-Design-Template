@@ -3,6 +3,10 @@
 public class OrdersController : ApiController
 {
     [HttpGet]
+    public async Task<ActionResult<List<OrderListItem>>> GetAll()
+        => await Send(new GetAllOrdersQuery());
+
+    [HttpGet]
     [Route(Id)]
     public async Task<ActionResult<OrderResponse>> GetById([FromRoute] OrderDetailsQuery query)
         => await Send(query);

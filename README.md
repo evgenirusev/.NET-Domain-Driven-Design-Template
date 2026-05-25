@@ -68,6 +68,8 @@ Bounded contexts communicate either through Event Sourcing or API calls.
 
 For instance, if you need to keep track of statistics such as the number of orders placed in a day, a solution could involve triggering an ‘OrderCreated’ Domain Event within the OrderManagement domain, which would then be captured and processed by the Statistics Domain.
 
+For an HTTP-based example, see `GetAllOrdersQuery` in `OrderManagement.Application/Orders/Queries/GetAll/`: the handler fetches orders from its own database, then enriches each `OrderItem` with the matching `ProductName` via `IProductCatalogHttpService` (one call per distinct ProductId). This pattern is simple and demonstrative for an admin-style read endpoint, but couples the read path to the ProductCatalog being online and is N+1 in HTTP calls. For hot paths or larger result sets, prefer event-driven denormalization: subscribe to `ProductAddedEvent` / a future `ProductRenamedEvent` and project `ProductName` onto the Order side at write time so the read is a pure local query.
+
 ### How to use Domain Events
 
 All entities extend the **Entity** class, which contains the interface for raising events.

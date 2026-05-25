@@ -6,7 +6,6 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
     {
         private readonly IOrderDomainRepository orderRepository;
         private readonly IOrderFactory orderFactory;
-        private readonly IProductCatalogHttpService productCatalogHttpService;
 
         public CreateOrderCommandHandler(
             IOrderDomainRepository orderRepository,

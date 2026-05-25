@@ -10,5 +10,5 @@ public sealed class ProductCatalogHttpService : IProductCatalogHttpService
     }
 
     public async Task<ProductResponse?> GetProductById(string id)
-        => await client.GetFromJsonAsync<ProductResponse>($"products/{id}");
+        => await client.GetFromJsonAsync<ProductResponse>($"api/Products/GetById/{id}");
 }
