@@ -16,7 +16,15 @@ public abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TE
         TEntity entity,
         CancellationToken cancellationToken = default)
     {
-        Data.Update(entity);
+        if (entity.Id == Guid.Empty)
+        {
+            Data.Add(entity);
+        }
+        else
+        {
+            Data.Update(entity);
+        }
+
         await Data.SaveChangesAsync(cancellationToken);
     }
 }

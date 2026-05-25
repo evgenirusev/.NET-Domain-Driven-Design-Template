@@ -17,20 +17,29 @@ internal class ProductRepository : DataRepository<ProductDbContext, Product>,
             .FirstOrDefaultAsync(b => b.Id == id, cancellationToken);
 
     public async Task<ProductResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
-        => await mapper
-            .ProjectTo<ProductResponse>(AllAsNoTracking()
-                .Include(b => b.Suppliers)
-                .Where(b => b.Id == id))
-            .FirstAsync(cancellationToken);
-    
+    {
+        var response = await mapper
+            .ProjectTo<ProductResponse>(AllAsNoTracking().Where(b => b.Id == id))
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (response == null)
+        {
+            throw new NotFoundException(nameof(Product), id);
+        }
+
+        return response;
+    }
+
     public async Task Delete(Guid id, CancellationToken cancellationToken = default)
     {
-        var product = await Data.Products.FindAsync(id);
+        var product = await Find(id, cancellationToken);
 
         if (product == null)
-            throw new ArgumentException("Product does not exist");
+        {
+            throw new NotFoundException(nameof(Product), id);
+        }
 
-        Data.Products.Remove(product);
+        Data.Set<Product>().Remove(product);
 
         await Data.SaveChangesAsync(cancellationToken);
     }

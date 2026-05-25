@@ -32,10 +32,19 @@ internal class OrderRepository : DataRepository<OrderManagementDbContext, Order>
         await Data.SaveChangesAsync(cancellationToken);
     }
 
-    public Task<OrderResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
-        => _mapper
+    public async Task<OrderResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
+    {
+        var response = await _mapper
             .ProjectTo<OrderResponse>(AllAsNoTracking().Where(o => o.Id == id))
-            .FirstAsync(cancellationToken);
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (response == null)
+        {
+            throw new NotFoundException(nameof(Order), id);
+        }
+
+        return response;
+    }
 
     public Task<List<OrderListItem>> GetAll(CancellationToken cancellationToken = default)
         => AllAsNoTracking()

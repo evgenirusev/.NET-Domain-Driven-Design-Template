@@ -17,6 +17,9 @@ public class OrdersController : ApiController
 
     [HttpPut]
     [Route(Id)]
-    public async Task<ActionResult> Update(UpdateOrderCommand command)
-        => await Send(command);
+    public async Task<ActionResult> Update([FromRoute] Guid id, UpdateOrderCommand command)
+    {
+        command.Id = id;
+        return await Send(command);
+    }
 }

@@ -13,6 +13,9 @@ public class ProductsController : ApiController
     
     [HttpPut]
     [Route(Id)]
-    public async Task<ActionResult> Update(UpdateProductCommand command)
-        => await Send(command);
+    public async Task<ActionResult> Update([FromRoute] Guid id, UpdateProductCommand command)
+    {
+        command.Id = id;
+        return await Send(command);
+    }
 }

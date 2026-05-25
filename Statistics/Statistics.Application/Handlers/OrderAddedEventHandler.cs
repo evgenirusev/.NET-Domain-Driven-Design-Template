@@ -6,5 +6,5 @@
         => this.statistics = statistics;
 
     public Task Handle(OrderAddedEvent domainEvent)
-        => statistics.IncrementProducts();
+        => statistics.IncrementOrders();
 }

@@ -72,7 +72,7 @@ public class Order : Entity, IAggregateRoot
 
     private void ValidateOrderDate(DateTime orderDate)
     {
-        if (orderDate > DateTime.Now)
+        if (orderDate > DateTime.UtcNow)
         {
             throw new ArgumentException("Order date cannot be in the future.");
         }

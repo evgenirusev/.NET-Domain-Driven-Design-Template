@@ -5,7 +5,7 @@ public class OrderCommandValidator : AbstractValidator<OrderCommand>
     public OrderCommandValidator()
     {
         RuleFor(o => o.OrderDate)
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Order date cannot be in the future.");
+            .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Order date cannot be in the future.");
 
         RuleFor(o => o.OrderItems)
             .NotEmpty().WithMessage("Order must contain at least one order item.")
