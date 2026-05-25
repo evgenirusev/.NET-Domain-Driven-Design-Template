@@ -17,6 +17,11 @@ public class UpdateProductCommand : ProductCommand, IRequest<Result>
         {
             var product = await productRepository.Find(request.Id, cancellationToken);
 
+            if (product == null)
+            {
+                throw new NotFoundException(nameof(Product), request.Id);
+            }
+
             product.UpdateName(request.Name)
                 .UpdateDescription(request.Description)
                 .UpdateProductType(Enumeration.FromValue<ProductType>(request.ProductType))

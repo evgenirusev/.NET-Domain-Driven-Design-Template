@@ -19,7 +19,9 @@ internal class ProductRepository : DataRepository<ProductDbContext, Product>,
     public async Task<ProductResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
         => await mapper
             .ProjectTo<ProductResponse>(AllAsNoTracking()
-                .Include(b => b.Suppliers)).FirstAsync();
+                .Include(b => b.Suppliers)
+                .Where(b => b.Id == id))
+            .FirstAsync(cancellationToken);
     
     public async Task Delete(Guid id, CancellationToken cancellationToken = default)
     {

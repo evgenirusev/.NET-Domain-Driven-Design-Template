@@ -2,7 +2,7 @@ using AutoMapper;
 
 public class OrderResponse : OrderModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     
     public override void Mapping(Profile mapper)
         => mapper

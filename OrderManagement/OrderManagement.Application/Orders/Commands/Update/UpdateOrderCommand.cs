@@ -17,6 +17,11 @@ public class UpdateOrderCommand : OrderCommand, IRequest<Result>
         {
             var order = await orderRepository.Find(request.Id, cancellationToken);
 
+            if (order == null)
+            {
+                throw new NotFoundException(nameof(Order), request.Id);
+            }
+
             order.UpdateStatus(Enumeration.FromValue<OrderStatus>(request.Status));
 
             await orderRepository.Save(order, cancellationToken);
